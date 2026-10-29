@@ -1,0 +1,16 @@
+Building for production...
+[2 / 5] DesktopDither-product
+[3 / 6] DesktopDither-product
+[6 / 11] DesktopDither-product
+[8 / 12] DesktopDitherTests-product
+[10 / 13] DesktopDitherTests-product
+[13 / 16] DesktopDitherTests-product
+Build complete! (11.37 sec)
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test measureTopBlurGPUCostAndWriteInspectionCrops() started.
+TOP_BLUR_BENCHMARK transparent=false sharp_median_ms=0.5540833335544448 blur_median_ms=0.9688333338999655 samples=50 render_passes=2 compute_dispatches=1 gaussian_encodes=3
+TOP_BLUR_BENCHMARK transparent=true sharp_median_ms=0.5536249991564546 blur_median_ms=0.9805833360587712 samples=50 render_passes=2 compute_dispatches=1 gaussian_encodes=3
+􁁛  Test measureTopBlurGPUCostAndWriteInspectionCrops() passed after 0.340 seconds.
+􁁛  Test run with 1 test in 0 suites passed after 0.341 seconds.

@@ -9,8 +9,8 @@ if [[ -z "${DEVELOPER_DIR:-}" && -d "/Applications/Xcode 27.2 rc.app/Contents/De
     export DEVELOPER_DIR="/Applications/Xcode 27.2 rc.app/Contents/Developer"
 fi
 
-swift build -c release 2>&1 | xcsift -f toon -w
-binary_directory="$(swift build -c release --show-bin-path)"
+swift build -c release --experimental-lto-mode full -debug-info-format none 2>&1 | xcsift -f toon -w
+binary_directory="$(swift build -c release --experimental-lto-mode full -debug-info-format none --show-bin-path)"
 app_bundle="$package_root/dist/Desktop Dither.app"
 mkdir -p "$app_bundle/Contents/MacOS" "$app_bundle/Contents/Resources"
 cp "$binary_directory/DesktopDither" "$app_bundle/Contents/MacOS/DesktopDither"

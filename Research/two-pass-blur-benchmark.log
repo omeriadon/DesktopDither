@@ -1,0 +1,11 @@
+Building for production...
+[1 / 1]
+Build complete! (0.35 sec)
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test measureTopBlurGPUCostAndWriteInspectionCrops() started.
+TOP_BLUR_BENCHMARK transparent=false sharp_median_ms=0.5560416648222599 blur_median_ms=0.9929166662914213 samples=50 render_passes=2 compute_dispatches=1 gaussian_encodes=3
+TOP_BLUR_BENCHMARK transparent=true sharp_median_ms=0.5543750012293458 blur_median_ms=0.9903749996738043 samples=50 render_passes=2 compute_dispatches=1 gaussian_encodes=3
+􁁛  Test measureTopBlurGPUCostAndWriteInspectionCrops() passed after 0.349 seconds.
+􁁛  Test run with 1 test in 0 suites passed after 0.350 seconds.

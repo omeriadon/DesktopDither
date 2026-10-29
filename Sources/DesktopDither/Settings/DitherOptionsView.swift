@@ -228,6 +228,11 @@ final class DitherOptionsModel: ObservableObject {
         publishPreview()
     }
 
+    func setTransparent(_ enabled: Bool) {
+        checks["transparent"] = enabled
+        publishPreview()
+    }
+
     func setSquareStyle(_ style: String) {
         squareStyle = style
         publishPreview()

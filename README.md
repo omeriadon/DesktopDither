@@ -19,7 +19,7 @@ The local app is ad-hoc signed. The script selects the installed full Xcode tool
 
 One transparent, borderless window is created for each selected display. Its queried window level is `.desktopWindow + 1`, below `.desktopIconWindow`. It ignores mouse events, cannot become key or main, and leaves wallpaper and desktop interaction alone. It uses public AppKit APIs without injection, private SkyLight calls, Accessibility permission, wallpaper replacement, or a privileged helper.
 
-Settings provide a master enable switch, opacity, all-displays/menu-bar-display selection, and visibility/power-policy controls. Desktop preferences persist in the app defaults; effect settings use the separate `local.desktopglow.dither` suite. Screen saver preferences are untouched. Closing Settings leaves the menu-bar app running; its menu pauses the layer or quits the app.
+Settings provide a master enable switch, **Effect opacity** and **Show wallpaper behind effect** under Desktop → Appearance, all-displays/menu-bar-display selection, and visibility/power-policy controls. Opacity is applied to the dither sublayer, so an opaque effect fades toward its selected background and a transparent effect fades toward wallpaper without rerendering Metal for slider-only changes. Desktop preferences persist in the app defaults; effect settings use the separate `local.desktopglow.dither` suite. Screen saver preferences are untouched. Closing Settings leaves the menu-bar app running; its menu pauses the layer or quits the app.
 
 The renderer adapts between 4 and 30 frames per second while moving. At the default scale and detail, wave speed 0.05 uses 30 fps and 0.01 uses 6 fps. Smaller scale, higher frequency, and higher contrast raise the cadence conservatively. The intro uses 30 fps, then switches to the selected cadence. Zero speed or disabled animation stops the timer after the intro; settings and resize changes still redraw. This trades temporal sampling for lower GPU work while preserving spatial resolution. Screen/session/power/occlusion changes control its timer. Disabled layers are ordered out. Closing Settings stops its preview while the desktop effect continues under the selected policies.
 
@@ -35,7 +35,7 @@ Tests cover window-level placement, click-through/focus refusal, pause-policy de
 
 ```sh
 set -o pipefail
-DEVELOPER_DIR='/Applications/Xcode 27.2 rc.app/Contents/Developer' swift test 2>&1 | xcsift -f toon -w
+DEVELOPER_DIR='/Applications/Xcode 27.2 rc.app/Contents/Developer' swift test -c release --experimental-lto-mode full -debug-info-format none 2>&1 | tee Research/release-tests.log | xcsift -f toon -w
 ```
 
 ## Performance measurements
@@ -44,10 +44,12 @@ See `Research/render-performance.md` for measurements and limits. Run the opt-in
 
 ```sh
 set -o pipefail
-DEVELOPER_DIR='/Applications/Xcode 27.2 rc.app/Contents/Developer' DESKTOP_GLOW_BENCHMARK=1 swift test -c release --filter 'measureLiveRenderCadence|measureRendererGPUCost' 2>&1 | tee /tmp/desktopglow-benchmark.log | xcsift -f toon -w
+DEVELOPER_DIR='/Applications/Xcode 27.2 rc.app/Contents/Developer' DESKTOP_GLOW_BENCHMARK=1 swift test -c release --experimental-lto-mode full -debug-info-format none --filter 'measureLiveRenderCadence|measureRendererGPUCost' 2>&1 | tee /tmp/desktopglow-benchmark.log | xcsift -f toon -w
 ```
 
 The raw log retains `GPU_BENCHMARK` and `CADENCE_BENCHMARK` records. Ordinary tests skip these measurements.
+
+Release uses SwiftPM optimization and full experimental link-time optimization, with debug information omitted. LTO affects CPU code generation and linking; it is not a GPU optimization. Renderer metrics report only this renderer's own render encoders, compute dispatches, and Gaussian encodes; MPS internal passes are not counted.
 
 ## Variable top blur
 

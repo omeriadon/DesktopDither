@@ -9,14 +9,20 @@ final class SettingsWindowController: NSWindowController, NSWindowDelegate {
     private let displays = NSPopUpButton()
     private let opacity = NSSlider(value: 1, minValue: 0, maxValue: 1, target: nil, action: nil)
     private let opacityValue = NSTextField(labelWithString: "")
+    private let transparent = NSButton(checkboxWithTitle: "Show wallpaper behind effect", target: nil, action: nil)
     private let covered = NSButton(checkboxWithTitle: "Pause when the desktop is fully covered", target: nil, action: nil)
     private let lowPower = NSButton(checkboxWithTitle: "Pause in Low Power Mode", target: nil, action: nil)
     private let reduceMotion = NSButton(checkboxWithTitle: "Respect Reduce Motion", target: nil, action: nil)
     private let statusField = NSTextField(wrappingLabelWithString: "")
-    private let ditherSettings = DitherSettings.shared
+    private let ditherSettings: DitherSettings
     private let ditherModel = DitherOptionsModel()
 
-    init(preferences: WallpaperPreferences, onChange: @escaping (WallpaperPreferences) -> Void) {
+    init(
+        preferences: WallpaperPreferences,
+        ditherSettings: DitherSettings = .shared,
+        onChange: @escaping (WallpaperPreferences) -> Void
+    ) {
+        self.ditherSettings = ditherSettings
         self.preferences = preferences
         self.onChange = onChange
         let window = NSWindow(
@@ -40,6 +46,7 @@ final class SettingsWindowController: NSWindowController, NSWindowDelegate {
                     configuration: self.ditherSettings.configuration,
                     resetScroll: false
                 )
+                self.refreshTransparencyControl()
                 self.onChange(self.preferences.normalized)
             } catch {
                 self.updateStatus(error.localizedDescription)
@@ -50,6 +57,7 @@ final class SettingsWindowController: NSWindowController, NSWindowDelegate {
                 return
             }
             self.ditherModel.loadValues(self.ditherSettings.values, configuration: self.ditherSettings.configuration)
+            self.refreshTransparencyControl()
         }
         window.delegate = self
         buildContent()
@@ -76,6 +84,7 @@ final class SettingsWindowController: NSWindowController, NSWindowDelegate {
         enabled.state = preferences.enabled ? .on : .off
         displays.selectItem(at: DisplayScope.allCases.firstIndex(of: preferences.displayScope) ?? 0)
         opacity.doubleValue = preferences.configuration.opacity
+        transparent.state = ditherSettings.configuration.transparent ? .on : .off
         covered.state = preferences.pauseWhenCovered ? .on : .off
         lowPower.state = preferences.respectLowPowerMode ? .on : .off
         reduceMotion.state = preferences.respectReduceMotion ? .on : .off
@@ -135,9 +144,14 @@ final class SettingsWindowController: NSWindowController, NSWindowDelegate {
         root.addArrangedSubview(enabled)
         displays.addItems(withTitles: DisplayScope.allCases.map(\.title))
         configure(displays, label: "Displays for the desktop layer", identifier: "effects.displays")
-        configure(opacity, label: "Desktop layer opacity", identifier: "effects.opacity")
+        configure(opacity, label: "Effect opacity", identifier: "effects.opacity")
+        transparent.target = self
+        transparent.action = #selector(changeTransparency)
+        transparent.setAccessibilityLabel("Show wallpaper behind effect")
+        transparent.setAccessibilityIdentifier("effects.transparent")
         let appearance = NSGridView(views: [
-            [label("Opacity"), sliderRow(opacity, value: opacityValue)],
+            [label("Effect opacity"), sliderRow(opacity, value: opacityValue)],
+            [label("Background"), transparent],
             [label("Displays"), displays]
         ])
         appearance.rowSpacing = 14
@@ -211,6 +225,10 @@ final class SettingsWindowController: NSWindowController, NSWindowDelegate {
         opacityValue.stringValue = String(format: "%.0f%%", opacity.doubleValue * 100)
     }
 
+    private func refreshTransparencyControl() {
+        transparent.state = ditherSettings.configuration.transparent ? .on : .off
+    }
+
     @objc private func changePreferences() {
         preferences.enabled = enabled.state == .on
         preferences.configuration.opacity = opacity.doubleValue
@@ -219,6 +237,13 @@ final class SettingsWindowController: NSWindowController, NSWindowDelegate {
         preferences.respectLowPowerMode = lowPower.state == .on
         preferences.respectReduceMotion = reduceMotion.state == .on
         refreshValues()
+        onChange(preferences.normalized)
+    }
+
+    @objc private func changeTransparency() {
+        let enabled = transparent.state == .on
+        ditherModel.setTransparent(enabled)
+        ditherSettings.set(enabled, for: "transparent")
         onChange(preferences.normalized)
     }
 

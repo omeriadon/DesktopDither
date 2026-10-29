@@ -1,0 +1,88 @@
+Building for production...
+[Pre-planning 1 / 95]
+[Planning deferred tasks]
+[3 / 20] DesktopDither
+[6 / 22] DesktopDither
+[12 / 24] DesktopDither
+[12 / 24] DesktopDither-product
+[16 / 25] DesktopDitherTests-product
+[18 / 26] DesktopDitherTests-product
+[22 / 25] DesktopDitherTests-product
+Build complete! (13.01 sec)
+Test Suite 'All tests' started at 2026-10-29 20:04:23.089.
+Test Suite 'All tests' passed at 2026-10-29 20:04:23.096.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.007) seconds
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test topBlurRecreatesResourcesForSmallAndResizedViewports() started.
+􀟈  Test effectLayerFitsBetweenWallpaperAndDesktopIcons() started.
+􀟈  Test topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􀟈  Test topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􀟈  Test measureTopBlurGPUCostAndWriteInspectionCrops() started.
+􀟈  Test compositorOpacityTargetsDitherOnlyAndPreservesSelectedBackground() started.
+􀟈  Test renderPoliciesPauseAndResumeWithoutChangingPreferences() started.
+􀟈  Test desktopAppearanceControlsPreserveEffectDraftsAndSynchronizeTransparency() started.
+􀟈  Test invalidSavedPreferencesFallBackWithoutChangingOtherDomains() started.
+􀟈  Test coverageCacheSurvivesSettingChangesEvictionAndLargeCellFallback() started.
+􀟈  Test topBlurProfileIsMonotonicAndHasSmoothZeroBoundary() started.
+􀟈  Test activePreviewTimerStopsAndRestartsAcrossPause() started.
+􀟈  Test renderSchedulingPolicyScalesWithSpeedAndCapsCadence() started.
+􀟈  Test ditherTransparencyPersistsInItsOwnSettingsSuite() started.
+􀟈  Test staticPreviewStopsTimerAfterItsInitialFrame() started.
+􀟈  Test measureLiveRenderCadence() started.
+􀟈  Test topBlurProfileHasBroaderMidStripFalloffWithSameSeam() started.
+􀟈  Test introSwitchesToSlowCadenceAndConfigurationRestartsStaticOutput() started.
+􀟈  Test wallpaperModeProducesPremultipliedTransparencyForEveryPalette() started.
+􀟈  Test topBlurUsesThe104PointStripAndReducedMaximumSigma() started.
+􀟈  Test introRendersAtThirtyFramesPerSecondThenStopsWhenStatic() started.
+􀟈  Test measureRendererGPUCost() started.
+􀟈  Test productionBlurUsesTwoRenderPassesAndOwnOperationCounters() started.
+􀟈  Test opacityIsBoundedAndNonfiniteValuesAreRejected() started.
+􀟈  Test measureRendererInitializationAndSharedResources() started.
+􀟈  Test overlayNeverTakesFocusOrDesktopClicks() started.
+􀟈  Test measureFusedFieldAndCellPass() started.
+􀟈  Test introForcesThirtyFramesPerSecondUntilComplete() started.
+􀟈  Test fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument scale → 1.0 to topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􀟈  Test case passing 1 argument scale → 2.0 to topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􀟈  Test case passing 1 argument scale → 1.0 to topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􀟈  Test nonAdvancingRendersDoNotMoveTimingBoundary() started.
+􀟈  Test case passing 1 argument scale → 2.0 to topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􁁛  Test renderPoliciesPauseAndResumeWithoutChangingPreferences() passed after 0.057 seconds.
+􀟈  Test case passing 1 argument variant → 0 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 1 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 2 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􁁛  Test effectLayerFitsBetweenWallpaperAndDesktopIcons() passed after 0.092 seconds.
+􀟈  Test case passing 1 argument variant → 4 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 3 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 5 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􁁛  Test measureTopBlurGPUCostAndWriteInspectionCrops() passed after 0.132 seconds.
+􁁛  Test topBlurProfileIsMonotonicAndHasSmoothZeroBoundary() passed after 0.132 seconds.
+􁁛  Test renderSchedulingPolicyScalesWithSpeedAndCapsCadence() passed after 0.132 seconds.
+􁁛  Test invalidSavedPreferencesFallBackWithoutChangingOtherDomains() passed after 0.132 seconds.
+􁁛  Test topBlurProfileHasBroaderMidStripFalloffWithSameSeam() passed after 0.132 seconds.
+􁁛  Test topBlurUsesThe104PointStripAndReducedMaximumSigma() passed after 0.132 seconds.
+􁁛  Test wallpaperModeProducesPremultipliedTransparencyForEveryPalette() passed after 0.132 seconds.
+􁁛  Test measureRendererGPUCost() passed after 0.132 seconds.
+􁁛  Test opacityIsBoundedAndNonfiniteValuesAreRejected() passed after 0.132 seconds.
+􁁛  Test measureRendererInitializationAndSharedResources() passed after 0.132 seconds.
+􁁛  Test measureFusedFieldAndCellPass() passed after 0.132 seconds.
+􁁛  Test introForcesThirtyFramesPerSecondUntilComplete() passed after 0.132 seconds.
+􁁛  Test nonAdvancingRendersDoNotMoveTimingBoundary() passed after 0.132 seconds.
+􁁛  Test topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) with 2 test cases passed after 0.132 seconds.
+􁁛  Test topBlurLeavesPixelsBelowStripUntouched(atScale:) with 2 test cases passed after 0.132 seconds.
+􁁛  Test productionBlurUsesTwoRenderPassesAndOwnOperationCounters() passed after 0.132 seconds.
+􁁛  Test topBlurRecreatesResourcesForSmallAndResizedViewports() passed after 0.133 seconds.
+􁁛  Test compositorOpacityTargetsDitherOnlyAndPreservesSelectedBackground() passed after 0.155 seconds.
+􁁛  Test coverageCacheSurvivesSettingChangesEvictionAndLargeCellFallback() passed after 0.167 seconds.
+􁁛  Test fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) with 6 test cases passed after 0.221 seconds.
+􁁛  Test desktopAppearanceControlsPreserveEffectDraftsAndSynchronizeTransparency() passed after 0.401 seconds.
+􁁛  Test activePreviewTimerStopsAndRestartsAcrossPause() passed after 0.908 seconds.
+􁁛  Test ditherTransparencyPersistsInItsOwnSettingsSuite() passed after 0.925 seconds.
+􁁛  Test staticPreviewStopsTimerAfterItsInitialFrame() passed after 1.272 seconds.
+􁁛  Test measureLiveRenderCadence() passed after 1.278 seconds.
+􁁛  Test introSwitchesToSlowCadenceAndConfigurationRestartsStaticOutput() passed after 4.261 seconds.
+􁁛  Test introRendersAtThirtyFramesPerSecondThenStopsWhenStatic() passed after 6.654 seconds.
+􁁛  Test overlayNeverTakesFocusOrDesktopClicks() passed after 6.695 seconds.
+􁁛  Test run with 30 tests in 0 suites passed after 6.695 seconds.

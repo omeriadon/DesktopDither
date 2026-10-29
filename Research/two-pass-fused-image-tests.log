@@ -1,0 +1,47 @@
+Building for production...
+[1 / 1]
+[3 / 6] DesktopDither
+[5 / 8] DesktopDither
+[12 / 16] DesktopDither
+[12 / 16] DesktopDither-product
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/AppDelegate-a9beac.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DesktopDitherApp-b342a1.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DesktopLayering-a01178.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DesktopOverlayController-fcc200.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DesktopOverlayWindow-88e485.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/RenderConditions-ca9cb1.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/OverlayConfiguration-bfae35.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/AnimationTiming-369f17.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DesktopContentView-8c0a41.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DitherConfiguration-199345.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DitherMetalRenderer-16813d.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DitherPreviewView-b87b74.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DisplayScope-35a155.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DitherOptionsView-7463a7.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DitherSettings-968161.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/SettingsWindowController-ed7f05.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/WallpaperPreferences-ab2d3e.o unable to open object file: No such file or directory
+[16 / 17] DesktopDitherTests-product
+[17 / 18] DesktopDitherTests-product
+[21 / 25] DesktopDitherTests-product
+[23 / 25] DesktopDitherTests-product
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/test_entry_point-bb5ef7.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DesktopPolicyTests-7b642f.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DitherRenderingTests-290e2a.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/OverlayConfigurationTests-40c54d.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/PreviousDitherMetalRenderer-2fbb9a.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/RenderPerformanceTests-b7be1f.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/RenderSchedulingTests-de67e8.o unable to open object file: No such file or directory
+Build complete! (11.80 sec)
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 2 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 1 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 4 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 0 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 5 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 3 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􁁛  Test fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) with 6 test cases passed after 0.477 seconds.
+􁁛  Test run with 1 test in 0 suites passed after 0.477 seconds.

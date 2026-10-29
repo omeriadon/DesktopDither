@@ -1,0 +1,131 @@
+Building for production...
+[Planning deferred tasks]
+[30 / 54]
+[32 / 56] DesktopDither-product
+[43 / 125]
+[45 / 125]
+[51 / 125]
+[56 / 125]
+[58 / 125]
+[64 / 125]
+[66 / 125]
+[69 / 125]
+[75 / 125]
+[80 / 125]
+[81 / 125]
+[91 / 125]
+[93 / 125]
+[95 / 125]
+[98 / 125]
+[100 / 125]
+[103 / 125] DesktopDither
+[111 / 125] DesktopDither
+[111 / 125] DesktopDither-product
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/AppDelegate-6a2f53.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DesktopDitherApp-f9cffe.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DesktopLayering-c13637.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DesktopOverlayController-24863a.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DesktopOverlayWindow-b5cccd.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/RenderConditions-e968af.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/OverlayConfiguration-4f12d1.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/AnimationTiming-e1f26d.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DesktopContentView-a37b4c.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DitherConfiguration-805a95.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DitherMetalRenderer-ad0317.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DitherPreviewView-86c405.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DisplayScope-9ed7b3.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DitherOptionsView-c5a405.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DitherSettings-f52427.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/SettingsWindowController-91f5a7.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/WallpaperPreferences-b26760.o unable to open object file: No such file or directory
+[116 / 126] DesktopDitherTests-product
+[118 / 132]
+[122 / 132]
+[123 / 132] DesktopDitherTests-product
+[128 / 132] DesktopDitherTests-product
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/test_entry_point-cbd33b.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DesktopPolicyTests-71d79e.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/DitherRenderingTests-98d718.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/OverlayConfigurationTests-fe6ced.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/PreviousDitherMetalRenderer-873f22.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/RenderPerformanceTests-3cea47.o unable to open object file: No such file or directory
+warning: (arm64) /var/folders/s_/ms68q0zx137_d7r08rxtnp9w0000gq/T/RenderSchedulingTests-8029c3.o unable to open object file: No such file or directory
+[130 / 132] DesktopDitherTests-product
+Build complete! (17.79 sec)
+Test Suite 'All tests' started at 2026-10-29 20:03:48.149.
+Test Suite 'All tests' passed at 2026-10-29 20:03:48.156.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.007) seconds
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test productionBlurUsesTwoRenderPassesAndOwnOperationCounters() started.
+􀟈  Test renderSchedulingPolicyScalesWithSpeedAndCapsCadence() started.
+􀟈  Test activePreviewTimerStopsAndRestartsAcrossPause() started.
+􀟈  Test topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􀟈  Test nonAdvancingRendersDoNotMoveTimingBoundary() started.
+􀟈  Test compositorOpacityTargetsDitherOnlyAndPreservesSelectedBackground() started.
+􀟈  Test topBlurRecreatesResourcesForSmallAndResizedViewports() started.
+􀟈  Test topBlurUsesThe104PointStripAndReducedMaximumSigma() started.
+􀟈  Test renderPoliciesPauseAndResumeWithoutChangingPreferences() started.
+􀟈  Test introRendersAtThirtyFramesPerSecondThenStopsWhenStatic() started.
+􀟈  Test wallpaperModeProducesPremultipliedTransparencyForEveryPalette() started.
+􀟈  Test invalidSavedPreferencesFallBackWithoutChangingOtherDomains() started.
+􀟈  Test overlayNeverTakesFocusOrDesktopClicks() started.
+􀟈  Test opacityIsBoundedAndNonfiniteValuesAreRejected() started.
+􀟈  Test introForcesThirtyFramesPerSecondUntilComplete() started.
+􀟈  Test coverageCacheSurvivesSettingChangesEvictionAndLargeCellFallback() started.
+􀟈  Test measureRendererGPUCost() started.
+􀟈  Test desktopAppearanceControlsPreserveEffectDraftsAndSynchronizeTransparency() started.
+􀟈  Test ditherTransparencyPersistsInItsOwnSettingsSuite() started.
+􀟈  Test topBlurProfileIsMonotonicAndHasSmoothZeroBoundary() started.
+􀟈  Test measureRendererInitializationAndSharedResources() started.
+􀟈  Test topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􀟈  Test staticPreviewStopsTimerAfterItsInitialFrame() started.
+􀟈  Test measureTopBlurGPUCostAndWriteInspectionCrops() started.
+􀟈  Test effectLayerFitsBetweenWallpaperAndDesktopIcons() started.
+􀟈  Test topBlurProfileHasBroaderMidStripFalloffWithSameSeam() started.
+􀟈  Test fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test introSwitchesToSlowCadenceAndConfigurationRestartsStaticOutput() started.
+􀟈  Test measureFusedFieldAndCellPass() started.
+􀟈  Test measureLiveRenderCadence() started.
+􀟈  Test case passing 1 argument scale → 1.0 to topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􀟈  Test case passing 1 argument scale → 2.0 to topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􀟈  Test case passing 1 argument scale → 1.0 to topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􀟈  Test case passing 1 argument variant → 0 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 1 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 2 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 3 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 4 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 5 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument scale → 2.0 to topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􁁛  Test nonAdvancingRendersDoNotMoveTimingBoundary() passed after 0.115 seconds.
+􁁛  Test renderSchedulingPolicyScalesWithSpeedAndCapsCadence() passed after 0.115 seconds.
+􁁛  Test topBlurUsesThe104PointStripAndReducedMaximumSigma() passed after 0.115 seconds.
+􁁛  Test renderPoliciesPauseAndResumeWithoutChangingPreferences() passed after 0.115 seconds.
+􁁛  Test opacityIsBoundedAndNonfiniteValuesAreRejected() passed after 0.115 seconds.
+􁁛  Test measureRendererGPUCost() passed after 0.115 seconds.
+􁁛  Test introForcesThirtyFramesPerSecondUntilComplete() passed after 0.115 seconds.
+􁁛  Test topBlurProfileIsMonotonicAndHasSmoothZeroBoundary() passed after 0.115 seconds.
+􁁛  Test measureRendererInitializationAndSharedResources() passed after 0.115 seconds.
+􁁛  Test measureTopBlurGPUCostAndWriteInspectionCrops() passed after 0.115 seconds.
+􁁛  Test topBlurProfileHasBroaderMidStripFalloffWithSameSeam() passed after 0.115 seconds.
+􁁛  Test effectLayerFitsBetweenWallpaperAndDesktopIcons() passed after 0.115 seconds.
+􁁛  Test invalidSavedPreferencesFallBackWithoutChangingOtherDomains() passed after 0.115 seconds.
+􁁛  Test wallpaperModeProducesPremultipliedTransparencyForEveryPalette() passed after 0.115 seconds.
+􁁛  Test topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) with 2 test cases passed after 0.115 seconds.
+􁁛  Test topBlurLeavesPixelsBelowStripUntouched(atScale:) with 2 test cases passed after 0.115 seconds.
+􁁛  Test productionBlurUsesTwoRenderPassesAndOwnOperationCounters() passed after 0.115 seconds.
+􁁛  Test topBlurRecreatesResourcesForSmallAndResizedViewports() passed after 0.115 seconds.
+􁁛  Test measureFusedFieldAndCellPass() passed after 0.115 seconds.
+􁁛  Test compositorOpacityTargetsDitherOnlyAndPreservesSelectedBackground() passed after 0.121 seconds.
+􁁛  Test coverageCacheSurvivesSettingChangesEvictionAndLargeCellFallback() passed after 0.139 seconds.
+􁁛  Test fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) with 6 test cases passed after 0.162 seconds.
+􁁛  Test activePreviewTimerStopsAndRestartsAcrossPause() passed after 0.614 seconds.
+􁁛  Test introRendersAtThirtyFramesPerSecondThenStopsWhenStatic() passed after 3.002 seconds.
+􁁛  Test overlayNeverTakesFocusOrDesktopClicks() passed after 3.050 seconds.
+􁁛  Test desktopAppearanceControlsPreserveEffectDraftsAndSynchronizeTransparency() passed after 3.267 seconds.
+􁁛  Test staticPreviewStopsTimerAfterItsInitialFrame() passed after 3.610 seconds.
+􁁛  Test ditherTransparencyPersistsInItsOwnSettingsSuite() passed after 3.625 seconds.
+􁁛  Test introSwitchesToSlowCadenceAndConfigurationRestartsStaticOutput() passed after 6.610 seconds.
+􁁛  Test measureLiveRenderCadence() passed after 6.612 seconds.
+􁁛  Test run with 30 tests in 0 suites passed after 6.613 seconds.

@@ -73,17 +73,48 @@ func measureTopBlurGPUCostAndWriteInspectionCrops() throws {
     configuration.intro = false
     configuration.ditherMode = 6
     configuration.waveAmplitude = 0.8
-    var samples = [[Double](), [Double]()]
+    var samplesByMode = Array(repeating: [[Double](), [Double]()], count: 2)
+    var metricsByMode = Array(repeating: [[String: Int]](repeating: [:], count: 2), count: 2)
+    // Rotate all four combinations together, so GPU clock drift cannot favor
+    // an entire transparency mode that always runs second.
     for frame in 0..<60 {
-        let order = frame.isMultiple(of: 2) ? [0, 1] : [1, 0]
-        for path in order {
+        for offset in 0..<4 {
+            let combination = (frame + offset) % 4
+            let mode = combination / 2
+            let path = combination % 2
+            configuration.transparent = mode == 1
             let renderer = path == 0 ? sharpRenderer : blurredRenderer
             let target = path == 0 ? sharp : blurred
             try renderer.render(to: target, width: width, height: height, cell: 4, configuration: configuration, scale: 2, advance: false, atTime: Float(frame) / 30)
-            if frame >= 10, let gpu = renderer.lastRenderMetrics?.gpuElapsed {
-                samples[path].append(gpu * 1_000)
+            if let lastMetrics = renderer.lastRenderMetrics {
+                metricsByMode[mode][path] = [
+                    "renderPassCount": lastMetrics.renderPassCount,
+                    "computeDispatchCount": lastMetrics.computeDispatchCount,
+                    "gaussianEncodeCount": lastMetrics.gaussianEncodeCount
+                ]
+                if frame >= 10, let gpu = lastMetrics.gpuElapsed {
+                    samplesByMode[mode][path].append(gpu * 1_000)
+                }
             }
         }
+    }
+    var benchmarkResults: [[String: Any]] = []
+    for mode in 0..<2 {
+        let transparent = mode == 1
+        let samples = samplesByMode[mode]
+        let metrics = metricsByMode[mode]
+        benchmarkResults.append([
+            "transparent": transparent,
+            "sharp_gpu_ms": samples[0],
+            "blur_gpu_ms": samples[1],
+            "sharp_metrics": metrics[0],
+            "blur_metrics": metrics[1]
+        ])
+        let blurRenderPasses = metrics[1]["renderPassCount"] ?? -1
+        let blurComputeDispatches = metrics[1]["computeDispatchCount"] ?? -1
+        let blurGaussianEncodes = metrics[1]["gaussianEncodeCount"] ?? -1
+        print("TOP_BLUR_BENCHMARK transparent=\(transparent) sharp_median_ms=\(median(samples[0])) blur_median_ms=\(median(samples[1])) samples=\(samples[0].count) render_passes=\(blurRenderPasses) compute_dispatches=\(blurComputeDispatches) gaussian_encodes=\(blurGaussianEncodes)")
+        #expect(samples.allSatisfy { $0.count == 50 })
     }
     let result: [String: Any] = [
         "width": width,
@@ -93,20 +124,19 @@ func measureTopBlurGPUCostAndWriteInspectionCrops() throws {
         "strip_points": DitherMetalRenderer.topBlurStripPoints,
         "maximum_sigma": DitherMetalRenderer.topBlurMaximumSigma,
         "gaussian_sigmas": DitherMetalRenderer.topBlurGaussianSigmas,
-        "sharp_gpu_ms": samples[0],
-        "blur_gpu_ms": samples[1]
+        "decay_coefficient": DitherMetalRenderer.topBlurDecayCoefficient,
+        "order": "four rotating interleaved combinations",
+        "cases": benchmarkResults
     ]
     if let output = ProcessInfo.processInfo.environment["DESKTOP_GLOW_BLUR_BENCHMARK_OUTPUT"] {
         let data = try JSONSerialization.data(withJSONObject: result, options: [.prettyPrinted, .sortedKeys])
         try data.write(to: URL(fileURLWithPath: output))
     }
-    print("TOP_BLUR_BENCHMARK sharp_median_ms=\(median(samples[0])) blur_median_ms=\(median(samples[1])) samples=\(samples[0].count)")
-    #expect(samples.allSatisfy { $0.count == 50 })
-
     let cropWidth = 640
     let cropHeight = 320
     let cropSharp = try makeSharedBenchmarkTexture(device: sharpRenderer.device, width: cropWidth, height: cropHeight)
     let cropBlurred = try makeSharedBenchmarkTexture(device: blurredRenderer.device, width: cropWidth, height: cropHeight)
+    configuration.transparent = false
     try sharpRenderer.render(to: cropSharp, width: cropWidth, height: cropHeight, cell: 8, configuration: configuration, scale: 2, advance: false, atTime: 2)
     try blurredRenderer.render(to: cropBlurred, width: cropWidth, height: cropHeight, cell: 8, configuration: configuration, scale: 2, advance: false, atTime: 2)
     if let directory = ProcessInfo.processInfo.environment["DESKTOP_GLOW_BLUR_BENCHMARK_ARTIFACTS"] {

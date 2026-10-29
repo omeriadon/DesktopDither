@@ -370,3 +370,55 @@ func topBlurUsesThe104PointStripAndReducedMaximumSigma() {
     #expect(DitherMetalRenderer.topBlurSigma(at: 0) == 5)
     #expect(DitherMetalRenderer.topBlurSigma(at: 1) == 0)
 }
+
+@Test
+func productionBlurUsesTwoRenderPassesAndOwnOperationCounters() throws {
+    let renderer = try DitherMetalRenderer(usesTopBlur: true, blurScale: 1)
+    let target = try makeSharedTexture(device: renderer.device, width: 160, height: 140)
+    var configuration = DitherConfiguration()
+    configuration.intro = false
+    configuration.cornerRadius = 0.3
+    configuration.joinAdjacentSquares = true
+    try renderer.render(
+        to: target,
+        width: 160,
+        height: 140,
+        cell: 4,
+        configuration: configuration,
+        scale: 1,
+        advance: false,
+        atTime: 2
+    )
+    let metrics = try #require(renderer.lastRenderMetrics)
+    #expect(metrics.renderPassCount == 2)
+    #expect(metrics.computeDispatchCount == 3)
+    #expect(metrics.gaussianEncodeCount == 3)
+
+    let sharpRenderer = try DitherMetalRenderer(usesTopBlur: false)
+    let sharpTarget = try makeSharedTexture(device: sharpRenderer.device, width: 160, height: 140)
+    try sharpRenderer.render(
+        to: sharpTarget,
+        width: 160,
+        height: 140,
+        cell: 4,
+        configuration: configuration,
+        advance: false,
+        atTime: 2
+    )
+    let sharpMetrics = try #require(sharpRenderer.lastRenderMetrics)
+    #expect(sharpMetrics.renderPassCount == 1)
+    #expect(sharpMetrics.gaussianEncodeCount == 0)
+}
+
+@Test
+func topBlurProfileHasBroaderMidStripFalloffWithSameSeam() {
+    let fraction: Float = 0.5
+    let oldProfile = DitherMetalRenderer.topBlurMaximumSigma
+        * exp(-4 * fraction)
+        * pow(1 - fraction, 2)
+    let newProfile = DitherMetalRenderer.topBlurSigma(at: fraction)
+    #expect(newProfile > oldProfile)
+    #expect(DitherMetalRenderer.topBlurSigma(at: 0) == DitherMetalRenderer.topBlurMaximumSigma)
+    #expect(DitherMetalRenderer.topBlurSigma(at: 1) == 0)
+    #expect(DitherMetalRenderer.topBlurSigma(at: 1.001) == 0)
+}

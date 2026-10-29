@@ -4,26 +4,43 @@ import QuartzCore
 @MainActor
 final class DesktopContentView: NSView {
     private let ditherView: DitherPreviewView
+    private let effectSettings: DitherSettings
     private(set) var isPaused = true
 
-    override init(frame frameRect: NSRect) {
+    convenience override init(frame frameRect: NSRect) {
+        self.init(frame: frameRect, effectSettings: .shared)
+    }
+
+    init(frame frameRect: NSRect, effectSettings: DitherSettings = .shared) {
         ditherView = DitherPreviewView(frame: frameRect)
+        self.effectSettings = effectSettings
         super.init(frame: frameRect)
         configure()
     }
 
     required init?(coder: NSCoder) {
         ditherView = DitherPreviewView(frame: .zero)
+        effectSettings = .shared
         super.init(coder: coder)
         configure()
     }
 
     func apply(_ configuration: OverlayConfiguration) {
+        let effectConfiguration = effectSettings.configuration
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        layer?.opacity = Float(configuration.normalized.opacity)
+        layer?.opacity = 1
+        layer?.backgroundColor = effectConfiguration.transparent
+            ? NSColor.clear.cgColor
+            : NSColor(
+                srgbRed: CGFloat(effectConfiguration.backgroundColor.x),
+                green: CGFloat(effectConfiguration.backgroundColor.y),
+                blue: CGFloat(effectConfiguration.backgroundColor.z),
+                alpha: 1
+            ).cgColor
+        ditherView.alphaValue = CGFloat(configuration.normalized.opacity)
         CATransaction.commit()
-        ditherView.setConfiguration(DitherSettings.shared.configuration)
+        ditherView.setConfiguration(effectConfiguration)
     }
 
     func setPaused(_ paused: Bool) {
