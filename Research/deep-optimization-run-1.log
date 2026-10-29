@@ -1,0 +1,22 @@
+Building for production...
+[2 / 4] DesktopGlow-product
+[3 / 5] DesktopGlow-product
+[5 / 9] DesktopGlow-product
+[6 / 9] DesktopGlow-product
+[9 / 12] DesktopGlowTests-product
+[11 / 14] DesktopGlowTests-product
+[14 / 18] DesktopGlowTests-product
+[16 / 18] DesktopGlowTests-product
+Build complete! (8.78 sec)
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test measureFusedFieldAndCellPass() started.
+FUSED_BENCHMARK mode=0 gap=0.0 corner=0.0 join=false cell=4 previous_ms=0.6442083322326653 current_ms=0.645500000246102 optimized_ms=0.6473333305621054 speedup=0.9971678728261815 samples=60
+FUSED_BENCHMARK mode=3 gap=0.18 corner=0.32 join=false cell=4 previous_ms=0.8499166651745327 current_ms=0.8493749992339872 optimized_ms=0.8532083338650409 speedup=0.9955071528501267 samples=60
+FUSED_BENCHMARK mode=6 gap=0.0 corner=0.32 join=true cell=4 previous_ms=1.035583332850365 current_ms=1.0352499994041864 optimized_ms=1.0352499994041864 speedup=1.0 samples=60
+FUSED_BENCHMARK mode=7 gap=0.0 corner=0.0 join=false cell=4 previous_ms=0.6345833353407215 current_ms=0.6363749998854473 optimized_ms=0.6367499991029035 speedup=0.9994110730773702 samples=60
+FUSED_BENCHMARK mode=0 gap=0.0 corner=0.0 join=false cell=16 previous_ms=0.3493750009511132 current_ms=0.3440000000409782 optimized_ms=0.34533333382569253 speedup=0.9961389948374131 samples=60
+FUSED_BENCHMARK mode=6 gap=0.0 corner=0.32 join=true cell=16 previous_ms=0.7068750019243453 current_ms=0.7102499985194299 optimized_ms=0.7120000009308569 speedup=0.9975421314478384 samples=60
+􁁛  Test measureFusedFieldAndCellPass() passed after 1.357 seconds.
+􁁛  Test run with 1 test in 0 suites passed after 1.357 seconds.

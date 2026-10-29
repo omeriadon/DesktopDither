@@ -1,0 +1,20 @@
+Building for production...
+[2 / 3] DesktopGlowTests-product
+[4 / 6] DesktopGlowTests-product
+[8 / 12] DesktopGlowTests-product
+[10 / 12] DesktopGlowTests-product
+Build complete! (4.45 sec)
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􀟈  Test topBlurProfileIsMonotonicAndHasSmoothZeroBoundary() started.
+􀟈  Test topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􀟈  Test case passing 1 argument scale → 1.0 to topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􀟈  Test case passing 1 argument scale → 2.0 to topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􀟈  Test case passing 1 argument scale → 1.0 to topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􀟈  Test case passing 1 argument scale → 2.0 to topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􁁛  Test topBlurProfileIsMonotonicAndHasSmoothZeroBoundary() passed after 0.001 seconds.
+􁁛  Test topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) with 2 test cases passed after 0.059 seconds.
+􁁛  Test topBlurLeavesPixelsBelowStripUntouched(atScale:) with 2 test cases passed after 0.069 seconds.
+􁁛  Test run with 3 tests in 0 suites passed after 0.069 seconds.

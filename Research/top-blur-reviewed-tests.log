@@ -1,0 +1,23 @@
+Building for production...
+[3 / 9] DesktopGlow
+[6 / 11] DesktopGlow-product
+[11 / 15] DesktopGlow-product
+[12 / 15] DesktopGlow-product
+[15 / 18] DesktopGlowTests-product
+[17 / 20] DesktopGlowTests-product
+[21 / 25] DesktopGlowTests-product
+[23 / 25] DesktopGlowTests-product
+Build complete! (8.83 sec)
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test topBlurProfileIsMonotonicAndHasSmoothZeroBoundary() started.
+􀟈  Test measureTopBlurGPUCostAndWriteInspectionCrops() started.
+􀟈  Test topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􀟈  Test case passing 1 argument scale → 1.0 to topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􀟈  Test case passing 1 argument scale → 2.0 to topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􁁛  Test topBlurProfileIsMonotonicAndHasSmoothZeroBoundary() passed after 0.001 seconds.
+􁁛  Test topBlurLeavesPixelsBelowStripUntouched(atScale:) with 2 test cases passed after 0.326 seconds.
+TOP_BLUR_BENCHMARK sharp_median_ms=0.7959166650834959 blur_median_ms=1.2607499993464444 samples=50
+􁁛  Test measureTopBlurGPUCostAndWriteInspectionCrops() passed after 0.507 seconds.
+􁁛  Test run with 3 tests in 0 suites passed after 0.507 seconds.

@@ -1,0 +1,27 @@
+Building for production...
+[3 / 8] DesktopGlow
+[6 / 10] DesktopGlow-product
+[12 / 17] DesktopGlow-product
+[13 / 17] DesktopGlow-product
+[16 / 20] DesktopGlowTests-product
+[18 / 21] DesktopGlowTests-product
+[21 / 25] DesktopGlowTests-product
+[23 / 25] DesktopGlowTests-product
+Build complete! (9.48 sec)
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􀟈  Test topBlurProfileIsMonotonicAndHasSmoothZeroBoundary() started.
+􀟈  Test measureTopBlurGPUCostAndWriteInspectionCrops() started.
+􀟈  Test topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􀟈  Test case passing 1 argument scale → 1.0 to topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􀟈  Test case passing 1 argument scale → 2.0 to topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􀟈  Test case passing 1 argument scale → 1.0 to topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􀟈  Test case passing 1 argument scale → 2.0 to topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􁁛  Test topBlurProfileIsMonotonicAndHasSmoothZeroBoundary() passed after 0.001 seconds.
+􁁛  Test topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) with 2 test cases passed after 0.328 seconds.
+􁁛  Test topBlurLeavesPixelsBelowStripUntouched(atScale:) with 2 test cases passed after 0.332 seconds.
+TOP_BLUR_BENCHMARK sharp_median_ms=0.8212499997171108 blur_median_ms=1.3063750011497177 samples=50
+􁁛  Test measureTopBlurGPUCostAndWriteInspectionCrops() passed after 0.536 seconds.
+􁁛  Test run with 4 tests in 0 suites passed after 0.536 seconds.

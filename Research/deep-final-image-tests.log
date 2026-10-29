@@ -1,0 +1,20 @@
+Building for production...
+[2 / 5] DesktopGlowTests-product
+[4 / 7] DesktopGlowTests-product
+[7 / 11] DesktopGlowTests-product
+[9 / 11] DesktopGlowTests-product
+Build complete! (3.98 sec)
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test coverageCacheSurvivesSettingChangesEvictionAndLargeCellFallback() started.
+􀟈  Test fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 3 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 1 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 5 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 4 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 2 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 0 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􁁛  Test coverageCacheSurvivesSettingChangesEvictionAndLargeCellFallback() passed after 0.098 seconds.
+􁁛  Test fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) with 6 test cases passed after 0.116 seconds.
+􁁛  Test run with 2 tests in 0 suites passed after 0.116 seconds.

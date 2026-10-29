@@ -1,0 +1,15 @@
+Building for production...
+[1 / 3] DesktopGlow
+Build complete! (0.24 sec)
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test measureFusedFieldAndCellPass() started.
+FUSED_BENCHMARK mode=0 gap=0.0 corner=0.0 join=false cell=4 previous_ms=0.6462500023189932 current_ms=0.5817916644446086 optimized_ms=0.5844166698807385 speedup=0.9955083323741166 samples=60
+FUSED_BENCHMARK mode=3 gap=0.18 corner=0.32 join=false cell=4 previous_ms=0.849791664222721 current_ms=0.7882499994593672 optimized_ms=0.6195416681293864 speedup=1.272311516736833 samples=60
+FUSED_BENCHMARK mode=6 gap=0.0 corner=0.32 join=true cell=4 previous_ms=1.032749998557847 current_ms=0.9708333309390582 optimized_ms=0.6469999971159268 speedup=1.500515201339496 samples=60
+FUSED_BENCHMARK mode=7 gap=0.0 corner=0.0 join=false cell=4 previous_ms=0.63679166851216 current_ms=0.5697500018868595 optimized_ms=0.5777916667284444 speedup=0.9860820684951755 samples=60
+FUSED_BENCHMARK mode=0 gap=0.0 corner=0.0 join=false cell=16 previous_ms=0.35025000033783726 current_ms=0.34375000177533366 optimized_ms=0.349000001733657 speedup=0.98495702025145 samples=60
+FUSED_BENCHMARK mode=6 gap=0.0 corner=0.32 join=true cell=16 previous_ms=0.7164583330450114 current_ms=0.7069999992381781 optimized_ms=0.4039583327539731 speedup=1.7501805060393931 samples=60
+􁁛  Test measureFusedFieldAndCellPass() passed after 1.377 seconds.
+􁁛  Test run with 1 test in 0 suites passed after 1.378 seconds.

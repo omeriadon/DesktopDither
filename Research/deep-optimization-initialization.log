@@ -1,0 +1,9 @@
+Building for production...
+Build complete! (0.23 sec)
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test measureRendererInitializationAndSharedResources() started.
+INITIALIZATION_BENCHMARK previous_cold_ms=44.81704166755662 shared_first_ms=1.8722916647675447 shared_warm_median_ms=0.053666666644858196 shared_gradient_count=1
+􁁛  Test measureRendererInitializationAndSharedResources() passed after 0.048 seconds.
+􁁛  Test run with 1 test in 0 suites passed after 0.048 seconds.

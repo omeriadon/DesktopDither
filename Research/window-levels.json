@@ -1,0 +1,708 @@
+{
+  "queriedDesktopLevel" : -2147483623,
+  "queriedIconLevel" : -2147483603,
+  "windows" : [
+    {
+      "bounds" : {
+        "Height" : 1080,
+        "Width" : 1920,
+        "X" : -283,
+        "Y" : -1080
+      },
+      "level" : -2147483622,
+      "onscreen" : true,
+      "order" : 0,
+      "owner" : "Dock",
+      "windowID" : 3515
+    },
+    {
+      "bounds" : {
+        "Height" : 1080,
+        "Width" : 1920,
+        "X" : -2057,
+        "Y" : -1080
+      },
+      "level" : -2147483622,
+      "onscreen" : true,
+      "order" : 1,
+      "owner" : "Dock",
+      "windowID" : 3514
+    },
+    {
+      "bounds" : {
+        "Height" : 1112,
+        "Width" : 1710,
+        "X" : -188,
+        "Y" : 0
+      },
+      "level" : -2147483622,
+      "onscreen" : true,
+      "order" : 2,
+      "owner" : "Dock",
+      "windowID" : 3513
+    },
+    {
+      "bounds" : {
+        "Height" : 1112,
+        "Width" : 1710,
+        "X" : -1962,
+        "Y" : 0
+      },
+      "level" : -2147483622,
+      "onscreen" : true,
+      "order" : 3,
+      "owner" : "Dock",
+      "windowID" : 3512
+    },
+    {
+      "bounds" : {
+        "Height" : 0,
+        "Width" : 0,
+        "X" : -188,
+        "Y" : 0
+      },
+      "level" : -2147483603,
+      "onscreen" : true,
+      "order" : 4,
+      "owner" : "Dock",
+      "windowID" : 3511
+    },
+    {
+      "bounds" : {
+        "Height" : 0,
+        "Width" : 0,
+        "X" : -1962,
+        "Y" : 0
+      },
+      "level" : -2147483603,
+      "onscreen" : true,
+      "order" : 5,
+      "owner" : "Dock",
+      "windowID" : 3510
+    },
+    {
+      "bounds" : {
+        "Height" : 387,
+        "Width" : 362,
+        "X" : 1022,
+        "Y" : 134
+      },
+      "level" : -2147483603,
+      "onscreen" : true,
+      "order" : 6,
+      "owner" : "Dock",
+      "windowID" : 3509
+    },
+    {
+      "bounds" : {
+        "Height" : 387,
+        "Width" : 362,
+        "X" : -752,
+        "Y" : 134
+      },
+      "level" : -2147483603,
+      "onscreen" : true,
+      "order" : 7,
+      "owner" : "Dock",
+      "windowID" : 3508
+    },
+    {
+      "bounds" : {
+        "Height" : 176,
+        "Width" : 172,
+        "X" : -107,
+        "Y" : 859
+      },
+      "level" : -2147483601,
+      "onscreen" : true,
+      "order" : 8,
+      "owner" : "Dock",
+      "windowID" : 3507
+    },
+    {
+      "bounds" : {
+        "Height" : 166,
+        "Width" : 346,
+        "X" : 76,
+        "Y" : 862
+      },
+      "level" : -2147483601,
+      "onscreen" : true,
+      "order" : 9,
+      "owner" : "Dock",
+      "windowID" : 3505
+    },
+    {
+      "bounds" : {
+        "Height" : 346,
+        "Width" : 706,
+        "X" : 51,
+        "Y" : 297
+      },
+      "level" : -2147483601,
+      "onscreen" : true,
+      "order" : 10,
+      "owner" : "Dock",
+      "windowID" : 3503
+    },
+    {
+      "bounds" : {
+        "Height" : 34,
+        "Width" : 34,
+        "X" : -188,
+        "Y" : 0
+      },
+      "level" : 999,
+      "onscreen" : true,
+      "order" : 11,
+      "owner" : "Dock",
+      "windowID" : 3501
+    },
+    {
+      "bounds" : {
+        "Height" : 34,
+        "Width" : 34,
+        "X" : -1962,
+        "Y" : 0
+      },
+      "level" : 999,
+      "onscreen" : true,
+      "order" : 12,
+      "owner" : "Dock",
+      "windowID" : 3500
+    },
+    {
+      "bounds" : {
+        "Height" : 34,
+        "Width" : 34,
+        "X" : 1488,
+        "Y" : 0
+      },
+      "level" : 999,
+      "onscreen" : true,
+      "order" : 13,
+      "owner" : "Dock",
+      "windowID" : 3499
+    },
+    {
+      "bounds" : {
+        "Height" : 34,
+        "Width" : 34,
+        "X" : -286,
+        "Y" : 0
+      },
+      "level" : 999,
+      "onscreen" : true,
+      "order" : 14,
+      "owner" : "Dock",
+      "windowID" : 3498
+    },
+    {
+      "bounds" : {
+        "Height" : 34,
+        "Width" : 34,
+        "X" : -188,
+        "Y" : 1078
+      },
+      "level" : 999,
+      "onscreen" : true,
+      "order" : 15,
+      "owner" : "Dock",
+      "windowID" : 3497
+    },
+    {
+      "bounds" : {
+        "Height" : 34,
+        "Width" : 34,
+        "X" : -1962,
+        "Y" : 1078
+      },
+      "level" : 999,
+      "onscreen" : true,
+      "order" : 16,
+      "owner" : "Dock",
+      "windowID" : 3496
+    },
+    {
+      "bounds" : {
+        "Height" : 34,
+        "Width" : 34,
+        "X" : -171,
+        "Y" : -1080
+      },
+      "level" : 999,
+      "onscreen" : true,
+      "order" : 17,
+      "owner" : "Dock",
+      "windowID" : 3490
+    },
+    {
+      "bounds" : {
+        "Height" : 34,
+        "Width" : 34,
+        "X" : -283,
+        "Y" : -34
+      },
+      "level" : 999,
+      "onscreen" : true,
+      "order" : 18,
+      "owner" : "Dock",
+      "windowID" : 3489
+    },
+    {
+      "bounds" : {
+        "Height" : 34,
+        "Width" : 34,
+        "X" : 1603,
+        "Y" : -34
+      },
+      "level" : 999,
+      "onscreen" : true,
+      "order" : 19,
+      "owner" : "Dock",
+      "windowID" : 3487
+    },
+    {
+      "bounds" : {
+        "Height" : 34,
+        "Width" : 34,
+        "X" : -171,
+        "Y" : -34
+      },
+      "level" : 999,
+      "onscreen" : true,
+      "order" : 20,
+      "owner" : "Dock",
+      "windowID" : 3486
+    },
+    {
+      "bounds" : {
+        "Height" : 500,
+        "Width" : 500,
+        "X" : 0,
+        "Y" : 612
+      },
+      "level" : 0,
+      "onscreen" : false,
+      "order" : 23,
+      "owner" : "Desktop Glow",
+      "windowID" : 3415
+    },
+    {
+      "bounds" : {
+        "Height" : 852,
+        "Width" : 620,
+        "X" : 174,
+        "Y" : 101
+      },
+      "level" : 0,
+      "onscreen" : true,
+      "order" : 24,
+      "owner" : "Desktop Glow",
+      "windowID" : 3414
+    },
+    {
+      "bounds" : {
+        "Height" : 1112,
+        "Width" : 1710,
+        "X" : 1586,
+        "Y" : 0
+      },
+      "level" : -2147483622,
+      "onscreen" : true,
+      "order" : 25,
+      "owner" : "Desktop Glow",
+      "windowID" : 3412
+    },
+    {
+      "bounds" : {
+        "Height" : 1112,
+        "Width" : 1710,
+        "X" : -1962,
+        "Y" : 0
+      },
+      "level" : -2147483625,
+      "onscreen" : true,
+      "order" : 33,
+      "owner" : "Wallpaper",
+      "windowID" : 3065
+    },
+    {
+      "bounds" : {
+        "Height" : 1080,
+        "Width" : 1920,
+        "X" : -95,
+        "Y" : -1080
+      },
+      "level" : -2147483625,
+      "onscreen" : true,
+      "order" : 34,
+      "owner" : "Wallpaper",
+      "windowID" : 3064
+    },
+    {
+      "bounds" : {
+        "Height" : 91,
+        "Width" : 1920,
+        "X" : -95,
+        "Y" : -1080
+      },
+      "level" : -2147483602,
+      "onscreen" : true,
+      "order" : 65,
+      "owner" : "Window Server",
+      "windowID" : 2747
+    },
+    {
+      "bounds" : {
+        "Height" : 1080,
+        "Width" : 1920,
+        "X" : -95,
+        "Y" : -1080
+      },
+      "level" : -2147483624,
+      "onscreen" : true,
+      "order" : 69,
+      "owner" : "WindowManager",
+      "windowID" : 2742
+    },
+    {
+      "bounds" : {
+        "Height" : 91,
+        "Width" : 1920,
+        "X" : -95,
+        "Y" : -1080
+      },
+      "level" : -2147483602,
+      "onscreen" : false,
+      "order" : 71,
+      "owner" : "Window Server",
+      "windowID" : 2740
+    },
+    {
+      "bounds" : {
+        "Height" : 176,
+        "Width" : 172,
+        "X" : -1881,
+        "Y" : 859
+      },
+      "level" : -2147483601,
+      "onscreen" : true,
+      "order" : 74,
+      "owner" : "Dock",
+      "windowID" : 3506
+    },
+    {
+      "bounds" : {
+        "Height" : 94,
+        "Width" : 1710,
+        "X" : -1962,
+        "Y" : 0
+      },
+      "level" : -2147483602,
+      "onscreen" : true,
+      "order" : 83,
+      "owner" : "Window Server",
+      "windowID" : 1735
+    },
+    {
+      "bounds" : {
+        "Height" : 1112,
+        "Width" : 1710,
+        "X" : 0,
+        "Y" : 0
+      },
+      "level" : 20,
+      "onscreen" : true,
+      "order" : 89,
+      "owner" : "Dock",
+      "windowID" : 1379
+    },
+    {
+      "bounds" : {
+        "Height" : 1112,
+        "Width" : 1710,
+        "X" : 1586,
+        "Y" : 0
+      },
+      "level" : -2147483603,
+      "onscreen" : true,
+      "order" : 94,
+      "owner" : "Finder",
+      "windowID" : 70
+    },
+    {
+      "bounds" : {
+        "Height" : 166,
+        "Width" : 346,
+        "X" : -1698,
+        "Y" : 862
+      },
+      "level" : -2147483601,
+      "onscreen" : true,
+      "order" : 96,
+      "owner" : "Dock",
+      "windowID" : 3504
+    },
+    {
+      "bounds" : {
+        "Height" : 346,
+        "Width" : 706,
+        "X" : -1723,
+        "Y" : 297
+      },
+      "level" : -2147483601,
+      "onscreen" : true,
+      "order" : 104,
+      "owner" : "Dock",
+      "windowID" : 3502
+    },
+    {
+      "bounds" : {
+        "Height" : 1080,
+        "Width" : 1920,
+        "X" : -95,
+        "Y" : -1080
+      },
+      "level" : -2147483603,
+      "onscreen" : true,
+      "order" : 118,
+      "owner" : "Finder",
+      "windowID" : 2771
+    },
+    {
+      "bounds" : {
+        "Height" : 1080,
+        "Width" : 1920,
+        "X" : -95,
+        "Y" : -1080
+      },
+      "level" : -2147483624,
+      "onscreen" : false,
+      "order" : 129,
+      "owner" : "WindowManager",
+      "windowID" : 131
+    },
+    {
+      "bounds" : {
+        "Height" : 34,
+        "Width" : 34,
+        "X" : 1603,
+        "Y" : -1080
+      },
+      "level" : 999,
+      "onscreen" : true,
+      "order" : 130,
+      "owner" : "Dock",
+      "windowID" : 3491
+    },
+    {
+      "bounds" : {
+        "Height" : 180,
+        "Width" : 180,
+        "X" : 1663,
+        "Y" : 855
+      },
+      "level" : -2147483601,
+      "onscreen" : true,
+      "order" : 156,
+      "owner" : "Notification Center",
+      "windowID" : 46
+    },
+    {
+      "bounds" : {
+        "Height" : 360,
+        "Width" : 720,
+        "X" : 1818,
+        "Y" : 290
+      },
+      "level" : -2147483601,
+      "onscreen" : true,
+      "order" : 157,
+      "owner" : "Notification Center",
+      "windowID" : 48
+    },
+    {
+      "bounds" : {
+        "Height" : 180,
+        "Width" : 360,
+        "X" : 1843,
+        "Y" : 855
+      },
+      "level" : -2147483601,
+      "onscreen" : true,
+      "order" : 159,
+      "owner" : "Notification Center",
+      "windowID" : 47
+    },
+    {
+      "bounds" : {
+        "Height" : 1080,
+        "Width" : 1920,
+        "X" : -95,
+        "Y" : -1080
+      },
+      "level" : -2147483622,
+      "onscreen" : true,
+      "order" : 161,
+      "owner" : "Desktop Glow",
+      "windowID" : 3413
+    },
+    {
+      "bounds" : {
+        "Height" : 94,
+        "Width" : 1710,
+        "X" : -188,
+        "Y" : 0
+      },
+      "level" : -2147483602,
+      "onscreen" : true,
+      "order" : 169,
+      "owner" : "Window Server",
+      "windowID" : 2108
+    },
+    {
+      "bounds" : {
+        "Height" : 34,
+        "Width" : 34,
+        "X" : -2057,
+        "Y" : -34
+      },
+      "level" : 999,
+      "onscreen" : true,
+      "order" : 171,
+      "owner" : "Dock",
+      "windowID" : 3488
+    },
+    {
+      "bounds" : {
+        "Height" : 34,
+        "Width" : 34,
+        "X" : -286,
+        "Y" : 1078
+      },
+      "level" : 999,
+      "onscreen" : true,
+      "order" : 173,
+      "owner" : "Dock",
+      "windowID" : 3494
+    },
+    {
+      "bounds" : {
+        "Height" : 94,
+        "Width" : 1710,
+        "X" : 1586,
+        "Y" : 0
+      },
+      "level" : -2147483602,
+      "onscreen" : true,
+      "order" : 175,
+      "owner" : "Window Server",
+      "windowID" : 2106
+    },
+    {
+      "bounds" : {
+        "Height" : 1112,
+        "Width" : 1710,
+        "X" : -188,
+        "Y" : 0
+      },
+      "level" : -2147483624,
+      "onscreen" : true,
+      "order" : 178,
+      "owner" : "WindowManager",
+      "windowID" : 24
+    },
+    {
+      "bounds" : {
+        "Height" : 34,
+        "Width" : 34,
+        "X" : -283,
+        "Y" : -1080
+      },
+      "level" : 999,
+      "onscreen" : true,
+      "order" : 179,
+      "owner" : "Dock",
+      "windowID" : 3493
+    },
+    {
+      "bounds" : {
+        "Height" : 1112,
+        "Width" : 1710,
+        "X" : -1962,
+        "Y" : 0
+      },
+      "level" : -2147483624,
+      "onscreen" : true,
+      "order" : 184,
+      "owner" : "WindowManager",
+      "windowID" : 23
+    },
+    {
+      "bounds" : {
+        "Height" : 34,
+        "Width" : 34,
+        "X" : -2057,
+        "Y" : -1080
+      },
+      "level" : 999,
+      "onscreen" : true,
+      "order" : 185,
+      "owner" : "Dock",
+      "windowID" : 3492
+    },
+    {
+      "bounds" : {
+        "Height" : 1080,
+        "Width" : 1920,
+        "X" : -95,
+        "Y" : -1080
+      },
+      "level" : -2147483626,
+      "onscreen" : true,
+      "order" : 194,
+      "owner" : "Window Server",
+      "windowID" : 4
+    },
+    {
+      "bounds" : {
+        "Height" : 1112,
+        "Width" : 1710,
+        "X" : 0,
+        "Y" : 0
+      },
+      "level" : -2147483626,
+      "onscreen" : true,
+      "order" : 198,
+      "owner" : "Window Server",
+      "windowID" : 3
+    },
+    {
+      "bounds" : {
+        "Height" : 34,
+        "Width" : 34,
+        "X" : 1488,
+        "Y" : 1078
+      },
+      "level" : 999,
+      "onscreen" : true,
+      "order" : 199,
+      "owner" : "Dock",
+      "windowID" : 3495
+    },
+    {
+      "bounds" : {
+        "Height" : 1112,
+        "Width" : 1710,
+        "X" : 1586,
+        "Y" : 0
+      },
+      "level" : -2147483624,
+      "onscreen" : true,
+      "order" : 204,
+      "owner" : "WindowManager",
+      "windowID" : 25
+    }
+  ]
+}

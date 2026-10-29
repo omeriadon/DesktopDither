@@ -1,0 +1,68 @@
+[
+  {
+    "label": "Bayer, dense grid",
+    "cell": 4,
+    "baseline_ms": 0.8220416675612796,
+    "optimized_ms": 0.6431041656469461,
+    "saving_percent": 21.7674491422291,
+    "range_percent": [
+      21.707717573553197,
+      23.364786788754998
+    ]
+  },
+  {
+    "label": "Gapped rounded cells, dense grid",
+    "cell": 4,
+    "baseline_ms": 1.0792916673381114,
+    "optimized_ms": 0.849000000016531,
+    "saving_percent": 21.337296885609756,
+    "range_percent": [
+      21.118120352381542,
+      21.756944334596483
+    ]
+  },
+  {
+    "label": "Joined rounded cells, dense grid",
+    "cell": 4,
+    "baseline_ms": 1.28077083354583,
+    "optimized_ms": 1.0328749995096587,
+    "saving_percent": 19.355206063669385,
+    "range_percent": [
+      7.542343926991424,
+      19.585242216524566
+    ]
+  },
+  {
+    "label": "No dithering, dense grid",
+    "cell": 4,
+    "baseline_ms": 0.8371250005438924,
+    "optimized_ms": 0.6325624999590218,
+    "saving_percent": 24.436314821796422,
+    "range_percent": [
+      24.436314821796422,
+      25.838970145609487
+    ]
+  },
+  {
+    "label": "Bayer, coarse grid",
+    "cell": 16,
+    "baseline_ms": 0.3575416667445097,
+    "optimized_ms": 0.34193750070699025,
+    "saving_percent": 4.36429302900515,
+    "range_percent": [
+      4.36429302900515,
+      13.732028708607224
+    ]
+  },
+  {
+    "label": "Joined rounded cells, coarse grid",
+    "cell": 16,
+    "baseline_ms": 0.7760208318359219,
+    "optimized_ms": 0.708958334143972,
+    "saving_percent": 8.641842453287286,
+    "range_percent": [
+      8.641842453287286,
+      9.253302587632739
+    ]
+  }
+]

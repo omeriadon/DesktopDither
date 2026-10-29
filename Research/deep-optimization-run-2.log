@@ -1,0 +1,14 @@
+Building for production...
+Build complete! (0.22 sec)
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test measureFusedFieldAndCellPass() started.
+FUSED_BENCHMARK mode=0 gap=0.0 corner=0.0 join=false cell=4 previous_ms=0.6485416633950081 current_ms=0.6471249980677385 optimized_ms=0.649416666419711 speedup=0.9964711894990212 samples=60
+FUSED_BENCHMARK mode=3 gap=0.18 corner=0.32 join=false cell=4 previous_ms=0.8529583355993964 current_ms=0.8518750000803266 optimized_ms=0.8566666692786384 speedup=0.9944066118478185 samples=60
+FUSED_BENCHMARK mode=6 gap=0.0 corner=0.32 join=true cell=4 previous_ms=1.037250000081258 current_ms=1.033624997944571 optimized_ms=1.0365833331889007 speedup=0.9971460709914863 samples=60
+FUSED_BENCHMARK mode=7 gap=0.0 corner=0.0 join=false cell=4 previous_ms=0.6390000016835984 current_ms=0.6387916691892315 optimized_ms=0.6413333321688697 speedup=0.9960369080287114 samples=60
+FUSED_BENCHMARK mode=0 gap=0.0 corner=0.0 join=false cell=16 previous_ms=0.35000000207219273 current_ms=0.3481249987089541 optimized_ms=0.35362500057090074 speedup=0.9844467957495445 samples=60
+FUSED_BENCHMARK mode=6 gap=0.0 corner=0.32 join=true cell=16 previous_ms=0.7138750006561168 current_ms=0.7139166664273944 optimized_ms=0.7163750015024561 speedup=0.9965683684244901 samples=60
+􁁛  Test measureFusedFieldAndCellPass() passed after 1.455 seconds.
+􁁛  Test run with 1 test in 0 suites passed after 1.455 seconds.

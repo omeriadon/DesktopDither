@@ -1,0 +1,178 @@
+{
+  "date": "2026-10-29",
+  "model": "Mac14,2",
+  "os": "macOS 27.2 (26B123)",
+  "gpu_target_pixels": [
+    3024,
+    1964
+  ],
+  "cell_pixels": 4,
+  "gpu_warmup_cycles": 20,
+  "gpu_samples_per_case": 80,
+  "runs": [
+    {
+      "log": "desktopglow-measurement.log",
+      "gpu": [
+        {
+          "mode": 6,
+          "speed": 0.05,
+          "median_ms": 1.4472916664090008,
+          "samples": 80
+        },
+        {
+          "mode": 7,
+          "speed": 0.05,
+          "median_ms": 1.4447499997913837,
+          "samples": 80
+        },
+        {
+          "mode": 6,
+          "speed": 0.01,
+          "median_ms": 1.4536666676576715,
+          "samples": 80
+        },
+        {
+          "mode": 7,
+          "speed": 0.01,
+          "median_ms": 1.4384999994945247,
+          "samples": 80
+        },
+        {
+          "mode": 6,
+          "speed": 0.0,
+          "median_ms": 1.661624999542255,
+          "samples": 80
+        },
+        {
+          "mode": 7,
+          "speed": 0.0,
+          "median_ms": 1.7339999994874233,
+          "samples": 80
+        }
+      ],
+      "cadence": [
+        {
+          "speed": 0.05,
+          "frames": 60,
+          "seconds": 2.0012450218200684,
+          "fps": 29.98133629106141
+        },
+        {
+          "speed": 0.01,
+          "frames": 11,
+          "seconds": 2.0006229877471924,
+          "fps": 5.498287317185425
+        },
+        {
+          "speed": 0.0,
+          "frames": 0,
+          "seconds": 2.0024830102920532,
+          "fps": 0.0
+        }
+      ]
+    },
+    {
+      "log": "desktopglow-final-benchmark.log",
+      "gpu": [
+        {
+          "mode": 6,
+          "speed": 0.05,
+          "median_ms": 1.3795416671200655,
+          "samples": 80
+        },
+        {
+          "mode": 7,
+          "speed": 0.05,
+          "median_ms": 1.2211249995743856,
+          "samples": 80
+        },
+        {
+          "mode": 6,
+          "speed": 0.01,
+          "median_ms": 1.4199166671460262,
+          "samples": 80
+        },
+        {
+          "mode": 7,
+          "speed": 0.01,
+          "median_ms": 1.3243749999674037,
+          "samples": 80
+        },
+        {
+          "mode": 6,
+          "speed": 0.0,
+          "median_ms": 1.3802500016026897,
+          "samples": 80
+        },
+        {
+          "mode": 7,
+          "speed": 0.0,
+          "median_ms": 1.4125416655588197,
+          "samples": 80
+        }
+      ],
+      "cadence": [
+        {
+          "speed": 0.05,
+          "frames": 60,
+          "seconds": 2.001847982406616,
+          "fps": 29.972305853048923
+        },
+        {
+          "speed": 0.01,
+          "frames": 12,
+          "seconds": 2.000562906265259,
+          "fps": 5.998311756365683
+        },
+        {
+          "speed": 0.0,
+          "frames": 0,
+          "seconds": 2.0002020597457886,
+          "fps": 0.0
+        }
+      ]
+    },
+    {
+      "log": "desktopglow-repeat-benchmark.log",
+      "gpu": [
+        {
+          "mode": 6,
+          "speed": 0.05,
+          "median_ms": 0.855500000398024,
+          "samples": 80
+        },
+        {
+          "mode": 7,
+          "speed": 0.05,
+          "median_ms": 0.8542916675651213,
+          "samples": 80
+        },
+        {
+          "mode": 6,
+          "speed": 0.01,
+          "median_ms": 0.8532083338650409,
+          "samples": 80
+        },
+        {
+          "mode": 7,
+          "speed": 0.01,
+          "median_ms": 0.8547500001441222,
+          "samples": 80
+        },
+        {
+          "mode": 6,
+          "speed": 0.0,
+          "median_ms": 0.8556249995308463,
+          "samples": 80
+        },
+        {
+          "mode": 7,
+          "speed": 0.0,
+          "median_ms": 0.8530416671419516,
+          "samples": 80
+        }
+      ],
+      "cadence": []
+    }
+  ]
+}

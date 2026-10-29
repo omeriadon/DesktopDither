@@ -1,0 +1,80 @@
+[
+  {
+    "label": "Bayer \u00b7 dense",
+    "cell": 4,
+    "previous_ms": 0.6472083332482725,
+    "optimized_ms": 0.5861041663592914,
+    "saving_percent": 9.441189760691982,
+    "range_percent": [
+      9.247866360415813,
+      9.573096074598775
+    ],
+    "previous_cpu_us": 58.833333241636865,
+    "optimized_cpu_us": 60.60416671971325
+  },
+  {
+    "label": "Gapped rounded \u00b7 dense",
+    "cell": 4,
+    "previous_ms": 0.8509583349223249,
+    "optimized_ms": 0.6249374982871814,
+    "saving_percent": 26.560740680185546,
+    "range_percent": [
+      26.560740680185546,
+      27.182069432326706
+    ],
+    "previous_cpu_us": 53.14583358995151,
+    "optimized_cpu_us": 53.18749936122913
+  },
+  {
+    "label": "Joined rounded \u00b7 dense",
+    "cell": 4,
+    "previous_ms": 1.0325000002922025,
+    "optimized_ms": 0.6496874993899837,
+    "saving_percent": 37.07627126332987,
+    "range_percent": [
+      37.07627126332987,
+      37.464430624145386
+    ],
+    "previous_cpu_us": 54.06250056694262,
+    "optimized_cpu_us": 58.437499319552444
+  },
+  {
+    "label": "No dithering \u00b7 dense",
+    "cell": 4,
+    "previous_ms": 0.636895832940354,
+    "optimized_ms": 0.5797708345198771,
+    "saving_percent": 8.969284373670373,
+    "range_percent": [
+      8.969284373670373,
+      9.410874607346354
+    ],
+    "previous_cpu_us": 52.64583342068363,
+    "optimized_cpu_us": 49.27083136863075
+  },
+  {
+    "label": "Bayer \u00b7 coarse",
+    "cell": 16,
+    "previous_ms": 0.35018750168092083,
+    "optimized_ms": 0.3492708328849403,
+    "saving_percent": 0.2617651376992214,
+    "range_percent": [
+      0.2617651376992214,
+      1.826129092397466
+    ],
+    "previous_cpu_us": 60.020833188900724,
+    "optimized_cpu_us": 68.14583139203023
+  },
+  {
+    "label": "Joined rounded \u00b7 coarse",
+    "cell": 16,
+    "previous_ms": 0.7148750009946525,
+    "optimized_ms": 0.4007708321296377,
+    "saving_percent": 43.9383344539928,
+    "range_percent": [
+      43.680935170765764,
+      45.07999798328518
+    ],
+    "previous_cpu_us": 24.895833121263422,
+    "optimized_cpu_us": 53.45833233150188
+  }
+]
