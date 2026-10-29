@@ -1,0 +1,15 @@
+Building for production...
+[1 / 1]
+Build complete! (0.35 sec)
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test measureTwoDimensionalComputeDispatch() started.
+DISPATCH_2D_BENCHMARK mode=0 gap=0.0 corner=0.0 join=false cell=4 one_dimensional_ms=1.2488749998738058 two_dimensional_ms=1.2423750013113022 reduction=0.005204683065287084 samples=60
+DISPATCH_2D_BENCHMARK mode=3 gap=0.18 corner=0.32 join=false cell=4 one_dimensional_ms=1.307708334934432 two_dimensional_ms=1.3066249994153623 reduction=0.0008284228907389534 samples=60
+DISPATCH_2D_BENCHMARK mode=6 gap=0.0 corner=0.32 join=true cell=4 one_dimensional_ms=1.4068749987927731 two_dimensional_ms=1.3665416663570795 reduction=0.02866873920590192 samples=60
+DISPATCH_2D_BENCHMARK mode=7 gap=0.0 corner=0.0 join=false cell=16 one_dimensional_ms=0.6704999977955595 two_dimensional_ms=0.6687916684313677 reduction=0.002547843951988533 samples=60
+DISPATCH_2D_BENCHMARK mode=0 gap=0.0 corner=0.0 join=false cell=16 one_dimensional_ms=0.6682500024908222 two_dimensional_ms=0.6709999979648273 reduction=-0.0041152195492029 samples=60
+DISPATCH_2D_BENCHMARK mode=6 gap=0.0 corner=0.32 join=true cell=16 one_dimensional_ms=0.7435416664520744 two_dimensional_ms=0.7404999996651895 reduction=0.004090781894441341 samples=60
+􁁛  Test measureTwoDimensionalComputeDispatch() passed after 1.179 seconds.
+􁁛  Test run with 1 test in 0 suites passed after 1.179 seconds.

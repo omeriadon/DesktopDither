@@ -53,3 +53,73 @@ export DEVELOPER_DIR='/Applications/Xcode 27.2 rc.app/Contents/Developer'
 swift test -c release 2>&1 | xcsift -f toon -w
 DESKTOP_GLOW_BENCHMARK=1 DESKTOP_GLOW_BENCHMARK_OUTPUT="$PWD/Research/renderer-optimization-repeat.json" swift test -c release --filter measureFusedFieldAndCellPass 2>&1 | xcsift -f toon -w
 ```
+
+## 2D join-mask dispatch measurement
+
+The existing compute helper used a threadgroup with `threadExecutionWidth × 1`
+threads and one group row per image row. A bounded candidate used an
+`executionWidth × 8` threadgroup for the join-mask kernel only. Field/cell and
+coverage dispatches remain on the original layout because the first trial did
+not show a consistent benefit there.
+
+The baseline opt-in release benchmark was run before the change with
+`measureRendererGPUCost`. Its six medians were 1.099, 1.084, 1.109, 1.073,
+1.088, and 1.159 ms for modes 6/7 at speeds 0.05/0.01/0.00. The raw output is
+`dispatch-baseline-20261029.log`.
+
+The first all-kernel 2D trial was mixed: the raw samples are in
+`dispatch-2d-benchmark-20261029.json`, with console output in the matching log.
+The `executionWidth × 8` trial is in
+`dispatch-2d-height8-benchmark-20261029.json`. Both showed small regressions on
+some flat or coarse cases, so those layouts were not retained.
+
+The retained join-mask-only trial used alternating one-dimensional and 2D
+renderers in the same process for 60 measured samples after 10 warm-up frames.
+Its raw samples are `dispatch-join-benchmark-20261029.json`, and the console
+output is `dispatch-join-benchmark-20261029.log`. The dense joined case measured
+1.407 ms for the old dispatch and 1.367 ms for the 2D dispatch (2.9% lower in
+that run). The coarse joined case measured 0.744 ms and 0.740 ms (0.4% lower).
+The other cases are controls; they use identical dispatch layouts and should
+be interpreted as timing noise, not as an optimization result.
+
+Both paths report the same renderer-owned operation counters: one final render
+pass, two compute dispatches for joined cells (fused cell plus join mask), and
+zero Gaussian encodes because the benchmark disables top blur. The differential
+image test now renders the same fixed-time cases with both dispatch layouts and
+requires byte equality across all eight modes, three shape configurations,
+transparency variants, odd viewports, and six cell sizes. This verifies sampled
+output, not every floating-point or device scheduling boundary.
+
+The measurements are renderer command-buffer GPU durations on this Mac. They
+exclude WindowServer composition, display scanout, other GPU activity, and
+energy use. The retained result is a bounded kernel-local change; no claim is
+made for whole-frame improvement outside the sampled joined-cell workload.
+
+### Review repeat and production blur check
+
+A second paired invocation (`dispatch-join-repeat-20261029.json` and `.log`)
+measured dense joins at 0.6685 → 0.6537 ms (2.2% lower) and coarse joins at
+0.3369 → 0.3355 ms (0.4% lower). Absolute times changed substantially between
+runs; compare paired paths within a run. The repeated dense result supports a
+small gain in the isolated workload, not a general application speedup.
+
+The benchmark also accepts `DESKTOP_GLOW_DISPATCH_TOP_BLUR=1`, which enables
+production top blur at 2x backing scale. The recorded invocation
+(`dispatch-join-blur-20261029.json` and `.log`) was noisy: unchanged controls
+varied by up to 15.7%, and the coarse joined case regressed by 11.9%. No stable
+production-with-blur improvement is established by that run. Keep these raw
+observations instead of reporting its apparent dense-grid gain as reliable.
+The change preserves blur storage precision; no reduced-precision trial was
+retained.
+
+Reproduce the paired workload (offscreen; does not change display settings):
+
+```sh
+set -o pipefail
+DEVELOPER_DIR='/Applications/Xcode 27.2 rc.app/Contents/Developer' DESKTOP_GLOW_BENCHMARK=1 swift test -c release --experimental-lto-mode full -debug-info-format none --filter measureTwoDimensionalComputeDispatch 2>&1 | xcsift -f toon -w
+```
+
+The release suite passed 31 tests with zero warnings/errors before review.
+The benchmark additions for optional top blur compiled in release and both
+filtered measurements passed. Packaging and signature checks do not launch the
+app or alter the running desktop.

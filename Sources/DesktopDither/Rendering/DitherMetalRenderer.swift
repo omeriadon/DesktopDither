@@ -179,6 +179,7 @@ final class DitherMetalRenderer {
     private let usesFusedFieldAndCellPass: Bool
     private let usesTopBlur: Bool
     private let blurScale: Float
+    private let usesTwoDimensionalThreadgroups: Bool
     private var topBlurResources: TopBlurResources?
 
     private struct TopBlurResources {
@@ -201,11 +202,18 @@ final class DitherMetalRenderer {
     private var coverageTextures: [CoverageKey: MTLTexture] = [:]
     private let usesCoverageAtlas: Bool
 
-    init(usesFusedFieldAndCellPass: Bool = true, usesCoverageAtlas: Bool = true, usesTopBlur: Bool = true, blurScale: Float = 1) throws {
+    init(
+        usesFusedFieldAndCellPass: Bool = true,
+        usesCoverageAtlas: Bool = true,
+        usesTopBlur: Bool = true,
+        blurScale: Float = 1,
+        usesTwoDimensionalThreadgroups: Bool = true
+    ) throws {
         self.usesCoverageAtlas = usesCoverageAtlas
         self.usesFusedFieldAndCellPass = usesFusedFieldAndCellPass
         self.usesTopBlur = usesTopBlur
         self.blurScale = max(0.01, blurScale)
+        self.usesTwoDimensionalThreadgroups = usesTwoDimensionalThreadgroups
         guard MemoryLayout<FieldUniforms>.stride == 64,
               MemoryLayout<DitherUniforms>.stride == 96 else {
             throw NSError(domain: "DitherMetal", code: 12, userInfo: [NSLocalizedDescriptionKey: "Swift and Metal uniform layouts do not match"])
@@ -376,7 +384,12 @@ final class DitherMetalRenderer {
             computeEncoder.setBytes(&field, length: MemoryLayout<FieldUniforms>.stride, index: 0)
             computeEncoder.setBytes(&dither, length: MemoryLayout<DitherUniforms>.stride, index: 1)
             computeEncoder.setBuffer(paletteBuffer, offset: 0, index: 2)
-            dispatch(computeEncoder, width: columns, height: rows, pipeline: fusedCellComputePipeline)
+            dispatch(
+                computeEncoder,
+                width: columns,
+                height: rows,
+                pipeline: fusedCellComputePipeline
+            )
             computeDispatchCount += 1
         } else {
             guard let fieldTexture else {
@@ -429,7 +442,12 @@ final class DitherMetalRenderer {
                 computeEncoder.setComputePipelineState(resources.coverageComputePipeline)
                 computeEncoder.setTexture(texture, index: 0)
                 computeEncoder.setBytes(&dither, length: MemoryLayout<DitherUniforms>.stride, index: 0)
-                dispatch(computeEncoder, width: cell, height: texture.height, pipeline: resources.coverageComputePipeline)
+                dispatch(
+                    computeEncoder,
+                    width: cell,
+                    height: texture.height,
+                    pipeline: resources.coverageComputePipeline
+                )
                 computeDispatchCount += 1
                 newCoverageKey = key
                 coverageTexture = texture
@@ -448,7 +466,13 @@ final class DitherMetalRenderer {
             encoder.setTexture(cellTexture, index: 0)
             encoder.setTexture(joinMaskTexture, index: 1)
             encoder.setBytes(&dither, length: MemoryLayout<DitherUniforms>.stride, index: 0)
-            dispatch(encoder, width: columns, height: rows, pipeline: resources.joinMaskComputePipeline)
+            dispatch(
+                encoder,
+                width: columns,
+                height: rows,
+                pipeline: resources.joinMaskComputePipeline,
+                usesTwoDimensionalThreadgroups: usesTwoDimensionalThreadgroups
+            )
             computeDispatchCount += 1
         }
         fusedComputeEncoder?.endEncoding()
@@ -530,12 +554,28 @@ final class DitherMetalRenderer {
         _ encoder: MTLComputeCommandEncoder,
         width: Int,
         height: Int,
-        pipeline: MTLComputePipelineState
+        pipeline: MTLComputePipelineState,
+        usesTwoDimensionalThreadgroups: Bool = false
     ) {
-        let threads = MTLSize(width: min(pipeline.threadExecutionWidth, width), height: 1, depth: 1)
+        let threadgroupWidth = min(pipeline.threadExecutionWidth, width)
+        let threadgroupHeight: Int
+        if usesTwoDimensionalThreadgroups {
+            threadgroupHeight = min(
+                8,
+                pipeline.maxTotalThreadsPerThreadgroup / threadgroupWidth,
+                height
+            )
+        } else {
+            threadgroupHeight = 1
+        }
+        let threads = MTLSize(
+            width: threadgroupWidth,
+            height: threadgroupHeight,
+            depth: 1
+        )
         let groups = MTLSize(
-            width: (width + threads.width - 1) / threads.width,
-            height: height,
+            width: (width + threadgroupWidth - 1) / threadgroupWidth,
+            height: (height + threadgroupHeight - 1) / threadgroupHeight,
             depth: 1
         )
         encoder.dispatchThreadgroups(groups, threadsPerThreadgroup: threads)

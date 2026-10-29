@@ -63,10 +63,21 @@ func fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant: Int) thr
     let height = variant.isMultiple(of: 2) ? 144 : 137
     let cell = [1, 2, 4, 6, 13, 32][variant]
     let previousRenderer = try PreviousDitherMetalRenderer(usesFusedFieldAndCellPass: true)
+    let oneDimensionalRenderer = try DitherMetalRenderer(
+        usesFusedFieldAndCellPass: true,
+        usesCoverageAtlas: true,
+        usesTopBlur: false,
+        usesTwoDimensionalThreadgroups: false
+    )
     let referenceRenderer = try DitherMetalRenderer(usesFusedFieldAndCellPass: true, usesCoverageAtlas: false, usesTopBlur: false)
     let optimizedRenderer = try DitherMetalRenderer(usesFusedFieldAndCellPass: true, usesTopBlur: false)
     let previousTexture = try makeSharedTexture(
         device: previousRenderer.device,
+        width: width,
+        height: height
+    )
+    let oneDimensionalTexture = try makeSharedTexture(
+        device: oneDimensionalRenderer.device,
         width: width,
         height: height
     )
@@ -133,6 +144,15 @@ func fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant: Int) thr
                 advance: false,
                 atTime: Float(variant) * 10.75
             )
+            try oneDimensionalRenderer.render(
+                to: oneDimensionalTexture,
+                width: width,
+                height: height,
+                cell: cell,
+                configuration: configuration,
+                advance: false,
+                atTime: Float(variant) * 10.75
+            )
             try optimizedRenderer.render(
                 to: optimizedTexture,
                 width: width,
@@ -146,9 +166,12 @@ func fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant: Int) thr
             let referencePixels = readPixels(from: referenceTexture, width: width, height: height)
             let optimizedPixels = readPixels(from: optimizedTexture, width: width, height: height)
             let previousPixels = readPixels(from: previousTexture, width: width, height: height)
+            let oneDimensionalPixels = readPixels(from: oneDimensionalTexture, width: width, height: height)
             let referenceMismatchCount = zip(previousPixels, referencePixels).filter { $0 != $1 }.count
+            let dispatchMismatchCount = zip(oneDimensionalPixels, optimizedPixels).filter { $0 != $1 }.count
             let optimizedMismatchCount = zip(previousPixels, optimizedPixels).filter { $0 != $1 }.count
             #expect(referenceMismatchCount == 0, "Current reference differs from preserved renderer for mode \(mode), shape \(shape)")
+            #expect(dispatchMismatchCount == 0, "2D join-mask dispatch differs from 1D dispatch for mode \(mode), shape \(shape)")
             #expect(optimizedMismatchCount == 0, "Next renderer differs from preserved renderer for mode \(mode), shape \(shape)")
         }
     }

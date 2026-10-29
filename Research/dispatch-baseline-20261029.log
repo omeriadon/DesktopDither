@@ -1,0 +1,15 @@
+Building for production...
+[1 / 1]
+Build complete! (0.39 sec)
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test measureRendererGPUCost() started.
+GPU_BENCHMARK mode=6 speed=0.05 median_ms=1.0990833325195126 samples=80
+GPU_BENCHMARK mode=7 speed=0.05 median_ms=1.0841250004887115 samples=80
+GPU_BENCHMARK mode=6 speed=0.01 median_ms=1.1093749999417923 samples=80
+GPU_BENCHMARK mode=7 speed=0.01 median_ms=1.0725833344622515 samples=80
+GPU_BENCHMARK mode=6 speed=0.0 median_ms=1.0883333343372215 samples=80
+GPU_BENCHMARK mode=7 speed=0.0 median_ms=1.1587083354243077 samples=80
+􁁛  Test measureRendererGPUCost() passed after 1.359 seconds.
+􁁛  Test run with 1 test in 0 suites passed after 1.360 seconds.

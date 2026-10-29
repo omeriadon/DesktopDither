@@ -59,6 +59,154 @@ func measureRendererGPUCost() throws {
 }
 
 @Test
+func measureTwoDimensionalComputeDispatch() throws {
+    guard ProcessInfo.processInfo.environment["DESKTOP_GLOW_BENCHMARK"] == "1" else {
+        return
+    }
+    let usesTopBlur = ProcessInfo.processInfo.environment["DESKTOP_GLOW_DISPATCH_TOP_BLUR"] == "1"
+    let width = 3024
+    let height = 1964
+    let oneDimensionalRenderer = try DitherMetalRenderer(
+        usesTopBlur: usesTopBlur,
+        blurScale: 2,
+        usesTwoDimensionalThreadgroups: false
+    )
+    let twoDimensionalRenderer = try DitherMetalRenderer(
+        usesTopBlur: usesTopBlur,
+        blurScale: 2,
+        usesTwoDimensionalThreadgroups: true
+    )
+    let oneDimensionalTexture = try makeBenchmarkTexture(
+        device: oneDimensionalRenderer.device,
+        width: width,
+        height: height
+    )
+    let twoDimensionalTexture = try makeBenchmarkTexture(
+        device: twoDimensionalRenderer.device,
+        width: width,
+        height: height
+    )
+    var configuration = DitherConfiguration()
+    configuration.intro = false
+    configuration.colorNum = 5
+    configuration.waveFrequency = 1.7
+    configuration.waveAmplitude = 0.62
+    configuration.scale = 0.8
+    configuration.contrast = 1.2
+    configuration.brightness = -0.08
+    configuration.palette = [
+        SIMD3<Float>(0.95, 0.1, 0.2),
+        SIMD3<Float>(0.1, 0.8, 0.35),
+        SIMD3<Float>(0.2, 0.35, 0.95)
+    ]
+    let cases: [(mode: Int, gap: Float, cornerRadius: Float, join: Bool, cell: Int)] = [
+        (0, 0, 0, false, 4),
+        (3, 0.18, 0.32, false, 4),
+        (6, 0, 0.32, true, 4),
+        (7, 0, 0, false, 16),
+        (0, 0, 0, false, 16),
+        (6, 0, 0.32, true, 16)
+    ]
+    var oneDimensionalSamples = [[Double]](repeating: [], count: cases.count)
+    var twoDimensionalSamples = [[Double]](repeating: [], count: cases.count)
+    var oneDimensionalMetrics = [[String: Int]](repeating: [:], count: cases.count)
+    var twoDimensionalMetrics = [[String: Int]](repeating: [:], count: cases.count)
+
+    for frame in 0..<70 {
+        for index in cases.indices {
+            let testCase = cases[index]
+            configuration.ditherMode = testCase.mode
+            configuration.gap = testCase.gap
+            configuration.cornerRadius = testCase.cornerRadius
+            configuration.joinAdjacentSquares = testCase.join
+            let fixedTime = Float(frame) / 30
+            let order: [Bool] = frame.isMultiple(of: 2) ? [false, true] : [true, false]
+            for usesTwoDimensionalThreadgroups in order {
+                let renderer = usesTwoDimensionalThreadgroups
+                    ? twoDimensionalRenderer
+                    : oneDimensionalRenderer
+                let texture = usesTwoDimensionalThreadgroups
+                    ? twoDimensionalTexture
+                    : oneDimensionalTexture
+                try renderer.render(
+                    to: texture,
+                    width: width,
+                    height: height,
+                    cell: testCase.cell,
+                    configuration: configuration,
+                    advance: false,
+                    atTime: fixedTime
+                )
+                if frame >= 10, let elapsed = renderer.lastRenderMetrics?.gpuElapsed {
+                    if usesTwoDimensionalThreadgroups {
+                        twoDimensionalSamples[index].append(elapsed * 1_000)
+                    } else {
+                        oneDimensionalSamples[index].append(elapsed * 1_000)
+                    }
+                }
+                if let metrics = renderer.lastRenderMetrics {
+                    let operationCounts = [
+                        "renderPassCount": metrics.renderPassCount,
+                        "computeDispatchCount": metrics.computeDispatchCount,
+                        "gaussianEncodeCount": metrics.gaussianEncodeCount
+                    ]
+                    if usesTwoDimensionalThreadgroups {
+                        twoDimensionalMetrics[index] = operationCounts
+                    } else {
+                        oneDimensionalMetrics[index] = operationCounts
+                    }
+                }
+            }
+        }
+    }
+
+    var results: [[String: Any]] = []
+    for index in cases.indices {
+        try #require(oneDimensionalSamples[index].count == 60)
+        try #require(twoDimensionalSamples[index].count == 60)
+        let oneDimensionalMedian = median(oneDimensionalSamples[index])
+        let twoDimensionalMedian = median(twoDimensionalSamples[index])
+        let reduction = (oneDimensionalMedian - twoDimensionalMedian) / oneDimensionalMedian
+        print(
+            "DISPATCH_2D_BENCHMARK top_blur=\(usesTopBlur) mode=\(cases[index].mode) gap=\(cases[index].gap) "
+                + "corner=\(cases[index].cornerRadius) join=\(cases[index].join) cell=\(cases[index].cell) "
+                + "one_dimensional_ms=\(oneDimensionalMedian) two_dimensional_ms=\(twoDimensionalMedian) "
+                + "reduction=\(reduction) samples=\(twoDimensionalSamples[index].count)"
+        )
+        results.append([
+            "mode": cases[index].mode,
+            "gap": cases[index].gap,
+            "cornerRadius": cases[index].cornerRadius,
+            "join": cases[index].join,
+            "cell": cases[index].cell,
+            "one_dimensional_ms": oneDimensionalSamples[index],
+            "two_dimensional_ms": twoDimensionalSamples[index],
+            "one_dimensional_operation_counts": oneDimensionalMetrics[index],
+            "two_dimensional_operation_counts": twoDimensionalMetrics[index]
+        ])
+        // The test's paired image differential is covered at smaller dimensions
+        // by DitherRenderingTests, where every mode and shape is byte-compared.
+        // Keep this benchmark focused on GPU timing and operation counts.
+        #expect(oneDimensionalSamples[index].count == 60)
+        #expect(twoDimensionalSamples[index].count == 60)
+    }
+    if let output = ProcessInfo.processInfo.environment["DESKTOP_GLOW_BENCHMARK_OUTPUT"] {
+        let data = try JSONSerialization.data(
+            withJSONObject: [
+                "top_blur": usesTopBlur,
+                "scale": 2,
+                "width": width,
+                "height": height,
+                "order": "alternating one-dimensional and two-dimensional dispatch",
+                "results": results
+            ],
+            options: [.prettyPrinted, .sortedKeys]
+        )
+        try data.write(to: URL(fileURLWithPath: output))
+    }
+}
+
+@Test
 func measureTopBlurGPUCostAndWriteInspectionCrops() throws {
     guard ProcessInfo.processInfo.environment["DESKTOP_GLOW_BENCHMARK"] == "1" else {
         return

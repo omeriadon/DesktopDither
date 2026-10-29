@@ -1,0 +1,18 @@
+Building for production...
+[1 / 1]
+[2 / 6] DesktopDitherTests-product
+[4 / 7] DesktopDitherTests-product
+[7 / 10] DesktopDitherTests-product
+Build complete! (8.89 sec)
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test measureTwoDimensionalComputeDispatch() started.
+DISPATCH_2D_BENCHMARK top_blur=false mode=0 gap=0.0 corner=0.0 join=false cell=4 one_dimensional_ms=0.5652500003634486 two_dimensional_ms=0.5637083340843674 reduction=0.0027274060647323895 samples=60
+DISPATCH_2D_BENCHMARK top_blur=false mode=3 gap=0.18 corner=0.32 join=false cell=4 one_dimensional_ms=0.6149166656541638 two_dimensional_ms=0.615666667727055 reduction=-0.0012196808360907725 samples=60
+DISPATCH_2D_BENCHMARK top_blur=false mode=6 gap=0.0 corner=0.32 join=true cell=4 one_dimensional_ms=0.6684583349851891 two_dimensional_ms=0.653708335448755 reduction=0.022065697687442255 samples=60
+DISPATCH_2D_BENCHMARK top_blur=false mode=7 gap=0.0 corner=0.0 join=false cell=16 one_dimensional_ms=0.31275000219466165 two_dimensional_ms=0.31295833468902856 reduction=-0.0006661310724379911 samples=60
+DISPATCH_2D_BENCHMARK top_blur=false mode=0 gap=0.0 corner=0.0 join=false cell=16 one_dimensional_ms=0.3125416660623159 two_dimensional_ms=0.3113749990006909 reduction=0.003732836892833461 samples=60
+DISPATCH_2D_BENCHMARK top_blur=false mode=6 gap=0.0 corner=0.32 join=true cell=16 one_dimensional_ms=0.33687500035739504 two_dimensional_ms=0.3355000008014031 reduction=0.004081631330710821 samples=60
+􁁛  Test measureTwoDimensionalComputeDispatch() passed after 0.810 seconds.
+􁁛  Test run with 1 test in 0 suites passed after 0.810 seconds.

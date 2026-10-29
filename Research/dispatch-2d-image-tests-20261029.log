@@ -1,0 +1,23 @@
+Building for production...
+[2 / 6] DesktopDitherTests-product
+[4 / 7] DesktopDitherTests-product
+[8 / 11] DesktopDitherTests-product
+Build complete! (7.06 sec)
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􀟈  Test coverageCacheSurvivesSettingChangesEvictionAndLargeCellFallback() started.
+􀟈  Test case passing 1 argument scale → 1.0 to topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􀟈  Test case passing 1 argument variant → 1 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 0 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument scale → 2.0 to topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􀟈  Test case passing 1 argument variant → 3 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 4 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 2 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 5 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􁁛  Test topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) with 2 test cases passed after 0.073 seconds.
+􁁛  Test coverageCacheSurvivesSettingChangesEvictionAndLargeCellFallback() passed after 0.127 seconds.
+􁁛  Test fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) with 6 test cases passed after 0.138 seconds.
+􁁛  Test run with 3 tests in 0 suites passed after 0.138 seconds.
