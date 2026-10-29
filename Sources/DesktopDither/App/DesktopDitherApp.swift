@@ -2,7 +2,7 @@ import AppKit
 
 @main
 @MainActor
-struct DesktopGlowApp {
+struct DesktopDitherApp {
     static func main() {
         let application = NSApplication.shared
         let delegate = AppDelegate()

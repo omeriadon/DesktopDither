@@ -50,9 +50,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func createMenu() {
         let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-        item.button?.image = NSImage(systemSymbolName: "desktopcomputer", accessibilityDescription: "Desktop Glow")
-        item.button?.toolTip = "Desktop Glow"
-        item.button?.setAccessibilityLabel("Desktop Glow controls")
+        item.button?.image = NSImage(systemSymbolName: "desktopcomputer", accessibilityDescription: "Desktop Dither")
+        item.button?.toolTip = "Desktop Dither"
+        item.button?.setAccessibilityLabel("Desktop Dither controls")
         let menu = NSMenu()
         let settings = NSMenuItem(title: "Settings…", action: #selector(showSettings), keyEquivalent: ",")
         settings.target = self
@@ -62,7 +62,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(toggle)
         toggleItem = toggle
         menu.addItem(.separator())
-        let quit = NSMenuItem(title: "Quit Desktop Glow", action: #selector(quit), keyEquivalent: "q")
+        let quit = NSMenuItem(title: "Quit Desktop Dither", action: #selector(quit), keyEquivalent: "q")
         quit.target = self
         menu.addItem(quit)
         item.menu = menu

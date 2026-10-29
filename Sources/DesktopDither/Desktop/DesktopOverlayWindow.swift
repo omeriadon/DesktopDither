@@ -9,7 +9,7 @@ final class DesktopOverlayWindow: NSWindow {
             backing: .buffered,
             defer: false
         )
-        title = "Desktop Glow overlay"
+        title = "Desktop Dither overlay"
         level = DesktopLayering.effectLevel
         backgroundColor = .clear
         isOpaque = false

@@ -1,5 +1,5 @@
 import Testing
-@testable import DesktopGlow
+@testable import DesktopDither
 
 @Test
 func opacityIsBoundedAndNonfiniteValuesAreRejected() {

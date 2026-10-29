@@ -4,7 +4,7 @@ import Foundation
 import ImageIO
 import Metal
 import Testing
-@testable import DesktopGlow
+@testable import DesktopDither
 
 // Opt in with DESKTOP_GLOW_BENCHMARK=1. GPU timestamps measure renderer work,
 // excluding WindowServer composition, display scanout, and system GPU activity.
@@ -90,6 +90,9 @@ func measureTopBlurGPUCostAndWriteInspectionCrops() throws {
         "height": height,
         "scale": 2,
         "cell": 4,
+        "strip_points": DitherMetalRenderer.topBlurStripPoints,
+        "maximum_sigma": DitherMetalRenderer.topBlurMaximumSigma,
+        "gaussian_sigmas": DitherMetalRenderer.topBlurGaussianSigmas,
         "sharp_gpu_ms": samples[0],
         "blur_gpu_ms": samples[1]
     ]
@@ -122,11 +125,11 @@ private func writePNG(texture: MTLTexture, width: Int, height: Int, to url: URL)
           let colorSpace = CGColorSpace(name: CGColorSpace.sRGB),
           let image = CGImage(width: width, height: height, bitsPerComponent: 8, bitsPerPixel: 32, bytesPerRow: width * 4, space: colorSpace, bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedFirst.rawValue | CGBitmapInfo.byteOrder32Little.rawValue), provider: provider, decode: nil, shouldInterpolate: false, intent: .defaultIntent),
           let destination = CGImageDestinationCreateWithURL(url as CFURL, "public.png" as CFString, 1, nil) else {
-        throw NSError(domain: "DesktopGlowTests", code: 1)
+        throw NSError(domain: "DesktopDitherTests", code: 1)
     }
     CGImageDestinationAddImage(destination, image, nil)
     guard CGImageDestinationFinalize(destination) else {
-        throw NSError(domain: "DesktopGlowTests", code: 2)
+        throw NSError(domain: "DesktopDitherTests", code: 2)
     }
 }
 

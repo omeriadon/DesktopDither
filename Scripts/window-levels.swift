@@ -5,7 +5,7 @@ let windows = CGWindowListCopyWindowInfo(.optionAll, kCGNullWindowID) as? [[Stri
 let selected = windows.enumerated().compactMap { index, window -> [String: Any]? in
     let owner = window[kCGWindowOwnerName as String] as? String ?? ""
     let level = window[kCGWindowLayer as String] as? Int ?? 0
-    guard level < 0 || ["Dock", "Desktop Glow", "DesktopGlow"].contains(owner) else {
+    guard level < 0 || ["Dock", "Desktop Dither", "DesktopDither"].contains(owner) else {
         return nil
     }
     return [

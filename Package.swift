@@ -2,13 +2,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "DesktopGlow",
+    name: "DesktopDither",
     platforms: [.macOS(.v26)],
     products: [
-        .executable(name: "DesktopGlow", targets: ["DesktopGlow"])
+        .executable(name: "DesktopDither", targets: ["DesktopDither"])
     ],
     targets: [
-        .executableTarget(name: "DesktopGlow"),
-        .testTarget(name: "DesktopGlowTests", dependencies: ["DesktopGlow"])
+        .executableTarget(name: "DesktopDither"),
+        .testTarget(name: "DesktopDitherTests", dependencies: ["DesktopDither"])
     ]
 )

@@ -25,7 +25,7 @@ final class SettingsWindowController: NSWindowController, NSWindowDelegate {
             backing: .buffered,
             defer: false
         )
-        window.title = "Desktop Glow Settings"
+        window.title = "Desktop Dither Settings"
         window.isReleasedWhenClosed = false
         super.init(window: window)
         ditherModel.onSave = { [weak self] in
@@ -124,7 +124,7 @@ final class SettingsWindowController: NSWindowController, NSWindowDelegate {
             root.bottomAnchor.constraint(lessThanOrEqualTo: desktopContent.bottomAnchor, constant: -20)
         ])
 
-        let title = NSTextField(labelWithString: "Desktop Glow")
+        let title = NSTextField(labelWithString: "Desktop Dither")
         title.font = .systemFont(ofSize: 19, weight: .semibold)
         root.addArrangedSubview(title)
         let subtitle = NSTextField(wrappingLabelWithString: "A live dither effect rendered behind your desktop icons. Wallpaper remains visible when enabled below.")

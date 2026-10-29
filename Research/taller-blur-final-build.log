@@ -1,0 +1,9 @@
+status: success
+summary:
+  errors: 0
+  warnings: 0
+  failed_tests: 0
+  linker_errors: 0
+  build_time: 5.42 sec
+/Users/omeriadon/Documents/Xcode_App_Library/DesktopDither/dist/Desktop Dither.app: replacing existing signature
+/Users/omeriadon/Documents/Xcode_App_Library/DesktopDither/dist/Desktop Dither.app

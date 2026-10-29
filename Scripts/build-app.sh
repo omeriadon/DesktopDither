@@ -11,9 +11,9 @@ fi
 
 swift build -c release 2>&1 | xcsift -f toon -w
 binary_directory="$(swift build -c release --show-bin-path)"
-app_bundle="$package_root/dist/Desktop Glow.app"
+app_bundle="$package_root/dist/Desktop Dither.app"
 mkdir -p "$app_bundle/Contents/MacOS" "$app_bundle/Contents/Resources"
-cp "$binary_directory/DesktopGlow" "$app_bundle/Contents/MacOS/DesktopGlow"
+cp "$binary_directory/DesktopDither" "$app_bundle/Contents/MacOS/DesktopDither"
 
 cat > "$app_bundle/Contents/Info.plist" <<'PLIST'
 <?xml version="1.0" encoding="UTF-8"?>
@@ -23,15 +23,15 @@ cat > "$app_bundle/Contents/Info.plist" <<'PLIST'
     <key>CFBundleDevelopmentRegion</key>
     <string>en</string>
     <key>CFBundleExecutable</key>
-    <string>DesktopGlow</string>
+    <string>DesktopDither</string>
     <key>CFBundleIdentifier</key>
     <string>local.desktopglow.app</string>
     <key>CFBundleIconFile</key>
     <string>AppIcon</string>
     <key>CFBundleName</key>
-    <string>Desktop Glow</string>
+    <string>Desktop Dither</string>
     <key>CFBundleDisplayName</key>
-    <string>Desktop Glow</string>
+    <string>Desktop Dither</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>

@@ -1,0 +1,31 @@
+Building for production...
+[3 / 8] DesktopDither
+[5 / 10] DesktopDither-product
+[11 / 16] DesktopDither-product
+[12 / 16] DesktopDither-product
+[16 / 20] DesktopDitherTests-product
+[17 / 21] DesktopDitherTests-product
+[20 / 21] DesktopDitherTests-product
+[23 / 23] DesktopDitherTests-product
+Build complete! (9.73 sec)
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test measureTopBlurGPUCostAndWriteInspectionCrops() started.
+􀟈  Test topBlurProfileIsMonotonicAndHasSmoothZeroBoundary() started.
+􀟈  Test topBlurUsesThe104PointStripAndReducedMaximumSigma() started.
+􀟈  Test topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􀟈  Test topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􀟈  Test topBlurRecreatesResourcesForSmallAndResizedViewports() started.
+􀟈  Test case passing 1 argument scale → 2.0 to topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􀟈  Test case passing 1 argument scale → 1.0 to topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􀟈  Test case passing 1 argument scale → 1.0 to topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􁁛  Test topBlurUsesThe104PointStripAndReducedMaximumSigma() passed after 0.001 seconds.
+􀟈  Test case passing 1 argument scale → 2.0 to topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􁁛  Test topBlurProfileIsMonotonicAndHasSmoothZeroBoundary() passed after 0.001 seconds.
+􁁛  Test topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) with 2 test cases passed after 0.375 seconds.
+􁁛  Test topBlurLeavesPixelsBelowStripUntouched(atScale:) with 2 test cases passed after 0.385 seconds.
+􁁛  Test topBlurRecreatesResourcesForSmallAndResizedViewports() passed after 0.411 seconds.
+TOP_BLUR_BENCHMARK sharp_median_ms=0.7970416663738433 blur_median_ms=1.1792500008596107 samples=50
+􁁛  Test measureTopBlurGPUCostAndWriteInspectionCrops() passed after 0.570 seconds.
+􁁛  Test run with 6 tests in 0 suites passed after 0.570 seconds.

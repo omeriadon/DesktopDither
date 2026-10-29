@@ -1,7 +1,7 @@
 import AppKit
 import Foundation
 import Testing
-@testable import DesktopGlow
+@testable import DesktopDither
 
 @Test
 func effectLayerFitsBetweenWallpaperAndDesktopIcons() {

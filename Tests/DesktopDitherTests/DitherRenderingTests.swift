@@ -1,6 +1,6 @@
 import Metal
 import Testing
-@testable import DesktopGlow
+@testable import DesktopDither
 
 @Test
 func wallpaperModeProducesPremultipliedTransparencyForEveryPalette() throws {
@@ -281,10 +281,10 @@ func topBlurMatchesGaussianReferenceAtDifferentHeights(scale: Float) throws {
     try renderer.render(to: blurred, width: width, height: height, cell: Int(4 * scale), configuration: configuration, scale: scale, advance: false, atTime: 2)
     let source = readPixels(from: sharp, width: width, height: height)
     let result = readPixels(from: blurred, width: width, height: height)
-    let levels: [Float] = [0, 0.5, 1, 2, 4, 8]
-    for pointY in [0, 5, 10, 18, 28, 40, 60, 79] {
+    let levels: [Float] = [0] + DitherMetalRenderer.topBlurGaussianSigmas
+    for pointY in [0, 8, 24, 40, 56, 80, 100, 103] {
         let y = Int(Float(pointY) * scale)
-        let sigma = DitherMetalRenderer.topBlurSigma(at: (Float(y) + 0.5) / (80 * scale))
+        let sigma = DitherMetalRenderer.topBlurSigma(at: (Float(y) + 0.5) / (DitherMetalRenderer.topBlurStripPoints * scale))
         let upper = try #require(levels.firstIndex { $0 >= sigma })
         let lower = max(0, upper - 1)
         let weight = upper == lower ? 0 : (sigma - levels[lower]) / (levels[upper] - levels[lower])
@@ -351,11 +351,22 @@ private func gaussianReference(_ pixels: [UInt8], width: Int, height: Int, x: In
 @Test
 func topBlurProfileIsMonotonicAndHasSmoothZeroBoundary() {
     let samples = (0...100).map { DitherMetalRenderer.topBlurSigma(at: Float($0) / 100) }
-    #expect(samples.first == 8)
+    #expect(samples.first == DitherMetalRenderer.topBlurMaximumSigma)
     #expect(samples.last == 0)
     for pair in zip(samples, samples.dropFirst()) {
         #expect(pair.0 >= pair.1)
     }
     #expect(DitherMetalRenderer.topBlurSigma(at: 0.999) > 0)
     #expect(DitherMetalRenderer.topBlurSigma(at: 1.001) == 0)
+}
+
+@Test
+func topBlurUsesThe104PointStripAndReducedMaximumSigma() {
+    #expect(DitherMetalRenderer.topBlurStripPoints == 104)
+    #expect(DitherMetalRenderer.topBlurStripPixels(scale: 1) == 104)
+    #expect(DitherMetalRenderer.topBlurStripPixels(scale: 2) == 208)
+    #expect(DitherMetalRenderer.topBlurMaximumSigma == 5)
+    #expect(DitherMetalRenderer.topBlurGaussianSigmas == [0.5, 2, 5])
+    #expect(DitherMetalRenderer.topBlurSigma(at: 0) == 5)
+    #expect(DitherMetalRenderer.topBlurSigma(at: 1) == 0)
 }

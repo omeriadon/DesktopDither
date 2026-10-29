@@ -29,7 +29,7 @@ final class DitherPreviewView: NSView {
             renderer = try DitherMetalRenderer()
         } catch {
             lastRenderError = error.localizedDescription
-            NSLog("Desktop Glow: Metal initialization failed: %@", error.localizedDescription)
+            NSLog("Desktop Dither: Metal initialization failed: %@", error.localizedDescription)
         }
         metalLayer.device = renderer?.device
         setAccessibilityElement(true)

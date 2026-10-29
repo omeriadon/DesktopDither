@@ -1,6 +1,6 @@
-# Desktop Glow
+# Desktop Dither
 
-An AppKit desktop-view host at `/Users/omeriadon/Documents/Xcode_App_Library/DesktopGlow`.
+A macOS desktop wallpaper renderer built with AppKit and Metal.
 
 The desktop layer renders the Metal dither effect copied from Dither Screen Saver. The Effect tab reuses its settings view and live preview. Enable **Show wallpaper behind effect** in the color section and click **Save** to remove the solid background while retaining the effect. Cancel restores the saved effect settings.
 
@@ -10,7 +10,7 @@ Open `Package.swift` in Xcode to edit the project. Xcode MCP is unavailable in t
 
 ```sh
 ./Scripts/build-app.sh
-open 'dist/Desktop Glow.app'
+open 'dist/Desktop Dither.app'
 ```
 
 The local app is ad-hoc signed. The script selects the installed full Xcode toolchain locally without changing `xcode-select`. It requires macOS 26 or later and has no third-party dependencies.
@@ -51,4 +51,4 @@ The raw log retains `GPU_BENCHMARK` and `CADENCE_BENCHMARK` records. Ordinary te
 
 ## Variable top blur
 
-The dither grid has an 80-point top strip with a maximum Gaussian sigma of 8 points. Blur decreases exponentially with a smooth taper to zero at the lower boundary. Only the grid is blurred; desktop wallpaper and other windows are not sampled. Reusable strip textures and Apple Metal Performance Shaders provide the Gaussian levels. See [implementation and verification](Research/top-blur.md).
+The dither grid has a 104-point top strip with a maximum Gaussian sigma of 5 points. Blur decreases exponentially with a smooth taper to zero at the lower boundary. Only the grid is blurred; desktop wallpaper and other windows are not sampled. Reusable strip textures and Apple Metal Performance Shaders provide three Gaussian levels at 0.5, 2, and 5 points. See [implementation and verification](Research/top-blur.md).

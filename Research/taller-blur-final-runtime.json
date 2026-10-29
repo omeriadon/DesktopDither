@@ -1,0 +1,33 @@
+{
+  "desktopLevel" : -2147483623,
+  "iconLevel" : -2147483603,
+  "overlays" : [
+    {
+      "canBecomeKey" : false,
+      "content" : "Metal dither renderer",
+      "displayID" : 2,
+      "frame" : "{{-95, 1112}, {1920, 1080}}",
+      "ignoresMouseEvents" : true,
+      "level" : -2147483622,
+      "paused" : false,
+      "renderedFrames" : 58,
+      "renderError" : "",
+      "transparent" : false,
+      "windowID" : 5158
+    },
+    {
+      "canBecomeKey" : false,
+      "content" : "Metal dither renderer",
+      "displayID" : 1,
+      "frame" : "{{0, 0}, {1710, 1112}}",
+      "ignoresMouseEvents" : true,
+      "level" : -2147483622,
+      "paused" : false,
+      "renderedFrames" : 58,
+      "renderError" : "",
+      "transparent" : false,
+      "windowID" : 5157
+    }
+  ],
+  "status" : "Dither effect running on 2 displays."
+}
