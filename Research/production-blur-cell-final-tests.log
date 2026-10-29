@@ -1,0 +1,49 @@
+Building for production...
+[2 / 5] DesktopDitherTests-product
+[4 / 7] DesktopDitherTests-product
+[8 / 11] DesktopDitherTests-product
+Build complete! (8.24 sec)
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test topBlurRecreatesResourcesForSmallAndResizedViewports() started.
+􀟈  Test topBlurUsesThe104PointStripAndReducedMaximumSigma() started.
+􀟈  Test cellBlurFastPathMatchesMPSReferenceForSupportedGeometry(atTime:) started.
+􀟈  Test topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􀟈  Test topBlurProfileIsMonotonicAndHasSmoothZeroBoundary() started.
+􀟈  Test fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test cellBlurFastPathRebuildsAndFallsBackAcrossGeometryChanges() started.
+􀟈  Test topBlurProfileHasBroaderMidStripFalloffWithSameSeam() started.
+􀟈  Test wallpaperModeProducesPremultipliedTransparencyForEveryPalette() started.
+􀟈  Test topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􀟈  Test case passing 1 argument atTime → 0.0 to cellBlurFastPathMatchesMPSReferenceForSupportedGeometry(atTime:) started.
+􀟈  Test case passing 1 argument scale → 1.0 to topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􀟈  Test productionBlurUsesTwoRenderPassesAndOwnOperationCounters() started.
+􀟈  Test case passing 1 argument scale → 2.0 to topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) started.
+􀟈  Test case passing 1 argument atTime → 2.25 to cellBlurFastPathMatchesMPSReferenceForSupportedGeometry(atTime:) started.
+􀟈  Test coverageCacheSurvivesSettingChangesEvictionAndLargeCellFallback() started.
+􀟈  Test case passing 1 argument atTime → 19.0 to cellBlurFastPathMatchesMPSReferenceForSupportedGeometry(atTime:) started.
+􀟈  Test case passing 1 argument variant → 0 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 2 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 1 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 3 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 4 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􀟈  Test case passing 1 argument variant → 5 to fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) started.
+􁁛  Test topBlurUsesThe104PointStripAndReducedMaximumSigma() passed after 0.277 seconds.
+􀟈  Test case passing 1 argument scale → 1.0 to topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􀟈  Test case passing 1 argument scale → 2.0 to topBlurLeavesPixelsBelowStripUntouched(atScale:) started.
+􁁛  Test topBlurProfileIsMonotonicAndHasSmoothZeroBoundary() passed after 0.311 seconds.
+􁁛  Test topBlurMatchesGaussianReferenceAtDifferentHeights(scale:) with 2 test cases passed after 0.314 seconds.
+􁁛  Test topBlurProfileHasBroaderMidStripFalloffWithSameSeam() passed after 0.314 seconds.
+􁁛  Test topBlurRecreatesResourcesForSmallAndResizedViewports() passed after 0.315 seconds.
+􁁛  Test wallpaperModeProducesPremultipliedTransparencyForEveryPalette() passed after 0.314 seconds.
+􁁛  Test productionBlurUsesTwoRenderPassesAndOwnOperationCounters() passed after 0.314 seconds.
+􁁛  Test topBlurLeavesPixelsBelowStripUntouched(atScale:) with 2 test cases passed after 0.315 seconds.
+􁁛  Test cellBlurFastPathRebuildsAndFallsBackAcrossGeometryChanges() passed after 0.340 seconds.
+􁁛  Test fusedFieldAndCellPassMatchesReferenceAcrossModesAndShapes(variant:) with 6 test cases passed after 0.351 seconds.
+􁁛  Test coverageCacheSurvivesSettingChangesEvictionAndLargeCellFallback() passed after 0.398 seconds.
+CELL_BLUR_DIFFERENTIAL maximum_byte_difference=2
+CELL_BLUR_DIFFERENTIAL maximum_byte_difference=2
+CELL_BLUR_DIFFERENTIAL maximum_byte_difference=2
+􁁛  Test cellBlurFastPathMatchesMPSReferenceForSupportedGeometry(atTime:) with 3 test cases passed after 0.688 seconds.
+􁁛  Test run with 12 tests in 0 suites passed after 0.689 seconds.

@@ -53,9 +53,11 @@ Release uses SwiftPM optimization and full experimental link-time optimization, 
 
 ## Variable top blur
 
-The dither grid has a 104-point top strip with a maximum Gaussian sigma of 5 points. Blur decreases exponentially with a smooth taper to zero at the lower boundary. Only the grid is blurred; desktop wallpaper and other windows are not sampled. Reusable strip textures and Apple Metal Performance Shaders provide three Gaussian levels at 0.5, 2, and 5 points. See [implementation and verification](Research/top-blur.md).
+The dither grid has a 104-point top strip with a maximum Gaussian sigma of 5 points. Blur decreases exponentially with a smooth taper to zero at the lower boundary. Only the grid is blurred; desktop wallpaper and other windows are not sampled. Eligible square cells use cached cell-interval weights and reduced-row intermediates for the three Gaussian levels at 0.5, 2, and 5 points. Other geometry uses the existing Metal Performance Shaders path. See [implementation and verification](Research/top-blur.md).
 
 
 Joined rounded cells use two-dimensional threadgroups for join-mask generation.
 The measured isolated dense-grid gain is small; image comparisons remain
 byte-identical. See [dispatch measurements and limits](Research/renderer-optimization.md#2d-join-mask-dispatch-measurement), including the noisy production-blur run.
+
+See [cell-aware production blur measurements and limits](Research/production-blur-cell-fastpath-20261029.md) for full-renderer GPU results, two-channel-level output tolerance, memory payload and cold setup costs.

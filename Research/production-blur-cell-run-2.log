@@ -1,0 +1,23 @@
+Building for production...
+[3 / 11] DesktopDither-product
+[6 / 13] DesktopDither-product
+[11 / 15] DesktopDither
+[11 / 15] DesktopDither-product
+[14 / 14] DesktopDitherTests-product
+Build complete! (7.61 sec)
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Test measureProductionCellBlurFastPath() started.
+CELL_BLUR_BENCHMARK cell=4 joined=false transparent=false old_gpu_ms=0.9836249992076773 new_gpu_ms=0.8431666683463845 old_cpu_ms=0.07520833241869695 new_cpu_ms=0.0279166670225095
+CELL_BLUR_BENCHMARK cell=4 joined=false transparent=true old_gpu_ms=1.0076666658278555 new_gpu_ms=0.8454583330603782 old_cpu_ms=0.07820833343430422 new_cpu_ms=0.04208333120914176
+CELL_BLUR_BENCHMARK cell=8 joined=false transparent=false old_gpu_ms=0.7574999981443398 new_gpu_ms=0.5655833338096272 old_cpu_ms=0.07516666664741933 new_cpu_ms=0.03766666850424372
+CELL_BLUR_BENCHMARK cell=8 joined=false transparent=true old_gpu_ms=0.7663750002393499 new_gpu_ms=0.5668333324138075 old_cpu_ms=0.07533333337050863 new_cpu_ms=0.0439583309344016
+CELL_BLUR_BENCHMARK cell=16 joined=false transparent=false old_gpu_ms=0.6742083314748015 new_gpu_ms=0.43508333328645676 old_cpu_ms=0.07950000144774094 new_cpu_ms=0.04733333480544388
+CELL_BLUR_BENCHMARK cell=16 joined=false transparent=true old_gpu_ms=0.6831249993410893 new_gpu_ms=0.43412499871919863 old_cpu_ms=0.07904166704975069 new_cpu_ms=0.0441250012954697
+CELL_BLUR_BENCHMARK cell=4 joined=true transparent=false old_gpu_ms=1.4627916643803474 new_gpu_ms=1.330499999312451 old_cpu_ms=0.26199999774689786 new_cpu_ms=0.2429583328193985
+CELL_BLUR_BENCHMARK cell=4 joined=true transparent=true old_gpu_ms=2.0242499995219987 new_gpu_ms=2.0775833327206783 old_cpu_ms=0.3531666661729105 new_cpu_ms=0.34500000037951395
+CELL_BLUR_BENCHMARK cell=16 joined=true transparent=false old_gpu_ms=1.9943749975936953 new_gpu_ms=1.974749997316394 old_cpu_ms=0.32354166614823043 new_cpu_ms=0.31891666731098667
+CELL_BLUR_BENCHMARK cell=16 joined=true transparent=true old_gpu_ms=1.9898749997082632 new_gpu_ms=2.0109999968553893 old_cpu_ms=0.3168333314533811 new_cpu_ms=0.35924999974668026
+􁁛  Test measureProductionCellBlurFastPath() passed after 3.655 seconds.
+􁁛  Test run with 1 test in 0 suites passed after 3.655 seconds.

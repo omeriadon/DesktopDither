@@ -284,6 +284,76 @@ func topBlurLeavesPixelsBelowStripUntouched(atScale scale: Float) throws {
     }
 }
 
+@Test(arguments: [Float(0), Float(2.25), Float(19)])
+func cellBlurFastPathMatchesMPSReferenceForSupportedGeometry(atTime: Float) throws {
+    var largestDifference = 0
+    for scale in [Float(1), Float(2)] {
+        let width = 256 * Int(scale)
+        let height = 320 * Int(scale)
+        let fastRenderer = try DitherMetalRenderer(usesCellBlurFastPath: true)
+        let referenceRenderer = try DitherMetalRenderer(usesCellBlurFastPath: false)
+        for cell in [4, 8, 16] {
+            let fastTexture = try makeSharedTexture(device: fastRenderer.device, width: width, height: height)
+            let referenceTexture = try makeSharedTexture(device: referenceRenderer.device, width: width, height: height)
+            for transparent in [false, true] {
+                for mode in 0...7 {
+                    var configuration = DitherConfiguration()
+                    configuration.intro = false
+                    configuration.transparent = transparent
+                    configuration.ditherMode = mode
+                    configuration.waveAmplitude = 0.62
+                    configuration.colorNum = 5
+                    configuration.waveColor = SIMD3<Float>(0.9, 0.35, 0.15)
+                    configuration.backgroundColor = SIMD3<Float>(0.08, 0.12, 0.2)
+                    configuration.waveFrequency = 1.7
+                    configuration.waveSpeed = 0.05
+                    configuration.scale = 0.35
+                    configuration.palette = mode.isMultiple(of: 2)
+                        ? []
+                        : [
+                            SIMD3<Float>(0.95, 0.1, 0.2),
+                            SIMD3<Float>(0.1, 0.8, 0.35),
+                            SIMD3<Float>(0.2, 0.35, 0.95)
+                        ]
+                    try fastRenderer.render(
+                        to: fastTexture,
+                        width: width,
+                        height: height,
+                        cell: cell,
+                        configuration: configuration,
+                        scale: scale,
+                        advance: false,
+                        atTime: atTime
+                    )
+                    try referenceRenderer.render(
+                        to: referenceTexture,
+                        width: width,
+                        height: height,
+                        cell: cell,
+                        configuration: configuration,
+                        scale: scale,
+                        advance: false,
+                        atTime: atTime
+                    )
+                    #expect(fastRenderer.lastRenderMetrics?.gaussianEncodeCount == 0)
+                    #expect(fastRenderer.lastRenderMetrics?.renderPassCount == 1)
+                    #expect(fastRenderer.lastRenderMetrics?.computeDispatchCount == 4)
+                    let actual = readPixels(from: fastTexture, width: width, height: height)
+                    let expected = readPixels(from: referenceTexture, width: width, height: height)
+                    let stripHeight = DitherMetalRenderer.topBlurStripPixels(scale: scale)
+                    let stripBytes = width * stripHeight * 4
+                    let differences = zip(actual.prefix(stripBytes), expected.prefix(stripBytes)).map { abs(Int($0) - Int($1)) }
+                    let maximumDifference = differences.max() ?? 0
+                    largestDifference = max(largestDifference, maximumDifference)
+                    #expect(maximumDifference <= 2, "Fast blur differs by \(maximumDifference) for scale \(scale), cell \(cell), transparent \(transparent), mode \(mode)")
+                    #expect(Array(actual.dropFirst(stripBytes)) == Array(expected.dropFirst(stripBytes)))
+                }
+            }
+        }
+    }
+    print("CELL_BLUR_DIFFERENTIAL maximum_byte_difference=\(largestDifference)")
+}
+
 @Test(arguments: [Float(1), Float(2)])
 func topBlurMatchesGaussianReferenceAtDifferentHeights(scale: Float) throws {
     let width = Int(96 * scale)
@@ -444,4 +514,40 @@ func topBlurProfileHasBroaderMidStripFalloffWithSameSeam() {
     #expect(DitherMetalRenderer.topBlurSigma(at: 0) == DitherMetalRenderer.topBlurMaximumSigma)
     #expect(DitherMetalRenderer.topBlurSigma(at: 1) == 0)
     #expect(DitherMetalRenderer.topBlurSigma(at: 1.001) == 0)
+}
+
+
+@Test
+func cellBlurFastPathRebuildsAndFallsBackAcrossGeometryChanges() throws {
+    let renderer = try DitherMetalRenderer()
+    let reference = try DitherMetalRenderer(usesCellBlurFastPath: false)
+    for (width, height, cell, scale, radius) in [
+        (128, 120, 4, Float(1), Float(0)),
+        (128, 124, 4, Float(1), Float(0)),
+        (132, 125, 4, Float(1), Float(0)),
+        (128, 256, 8, Float(2), Float(0)),
+        (128, 256, 8, Float(2), Float(0.3)),
+        (128, 256, 8, Float(1.5), Float(0)),
+        (128, 124, 4, Float(1), Float(0))
+    ] {
+        var configuration = DitherConfiguration()
+        configuration.intro = false
+        configuration.transparent = true
+        configuration.cornerRadius = radius
+        configuration.scale = 0.2
+        configuration.waveAmplitude = 0.8
+        let actualTexture = try makeSharedTexture(device: renderer.device, width: width, height: height)
+        let expectedTexture = try makeSharedTexture(device: renderer.device, width: width, height: height)
+        try renderer.render(to: actualTexture, width: width, height: height, cell: cell, configuration: configuration, scale: scale, advance: false, atTime: 7)
+        try reference.render(to: expectedTexture, width: width, height: height, cell: cell, configuration: configuration, scale: scale, advance: false, atTime: 7)
+        let actual = readPixels(from: actualTexture, width: width, height: height)
+        let expected = readPixels(from: expectedTexture, width: width, height: height)
+        let stripBytes = min(height, DitherMetalRenderer.topBlurStripPixels(scale: scale)) * width * 4
+        let maximumDifference = zip(actual.prefix(stripBytes), expected.prefix(stripBytes)).map { abs(Int($0) - Int($1)) }.max() ?? 0
+        #expect(maximumDifference <= 2)
+        #expect(actual.dropFirst(stripBytes).elementsEqual(expected.dropFirst(stripBytes)))
+        if renderer.lastRenderMetrics?.gaussianEncodeCount == 3 {
+            #expect(actual == expected)
+        }
+    }
 }

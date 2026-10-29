@@ -294,6 +294,131 @@ func measureTopBlurGPUCostAndWriteInspectionCrops() throws {
     }
 }
 
+@Test
+func measureProductionCellBlurFastPath() throws {
+    guard ProcessInfo.processInfo.environment["DESKTOP_GLOW_CELL_BLUR_BENCHMARK"] == "1" else {
+        return
+    }
+    let width = 3024
+    let height = 1968
+    let oldRenderer = try DitherMetalRenderer(blurScale: 2, usesCellBlurFastPath: false)
+    let newRenderer = try DitherMetalRenderer(blurScale: 2, usesCellBlurFastPath: true)
+    let oldTexture = try makeBenchmarkTexture(device: oldRenderer.device, width: width, height: height)
+    let newTexture = try makeBenchmarkTexture(device: newRenderer.device, width: width, height: height)
+    let cases: [(cell: Int, joined: Bool, transparent: Bool)] = [
+        (4, false, false),
+        (4, false, true),
+        (8, false, false),
+        (8, false, true),
+        (16, false, false),
+        (16, false, true),
+        (4, true, false),
+        (4, true, true),
+        (16, true, false),
+        (16, true, true)
+    ]
+    var results: [[String: Any]] = []
+    for testCase in cases {
+        var configuration = DitherConfiguration()
+        configuration.intro = false
+        configuration.transparent = testCase.transparent
+        configuration.joinAdjacentSquares = testCase.joined
+        configuration.cornerRadius = testCase.joined ? 0.32 : 0
+        var oldGPU: [Double] = []
+        var newGPU: [Double] = []
+        var oldCPU: [Double] = []
+        var newCPU: [Double] = []
+        var firstOldCPU: Double = 0
+        var firstNewCPU: Double = 0
+        var oldMetrics: [String: Int] = [:]
+        var newMetrics: [String: Int] = [:]
+        for frame in 0..<100 {
+            let newFirst = frame.isMultiple(of: 2)
+            for isNew in newFirst ? [true, false] : [false, true] {
+                let renderer = isNew ? newRenderer : oldRenderer
+                let texture = isNew ? newTexture : oldTexture
+                try renderer.render(
+                    to: texture,
+                    width: width,
+                    height: height,
+                    cell: testCase.cell,
+                    configuration: configuration,
+                    scale: 2,
+                    advance: false,
+                    atTime: Float(frame) / 30
+                )
+                if let metrics = renderer.lastRenderMetrics {
+                    let gpu = (metrics.gpuElapsed ?? 0) * 1_000
+                    let cpu = metrics.cpuElapsed * 1_000
+                    if isNew {
+                        if frame == 0 {
+                            firstNewCPU = cpu
+                        }
+                        newMetrics = [
+                            "renderPassCount": metrics.renderPassCount,
+                            "computeDispatchCount": metrics.computeDispatchCount,
+                            "gaussianEncodeCount": metrics.gaussianEncodeCount
+                        ]
+                        if frame >= 20 {
+                            newGPU.append(gpu)
+                            newCPU.append(cpu)
+                        }
+                    } else {
+                        if frame == 0 {
+                            firstOldCPU = cpu
+                        }
+                        oldMetrics = [
+                            "renderPassCount": metrics.renderPassCount,
+                            "computeDispatchCount": metrics.computeDispatchCount,
+                            "gaussianEncodeCount": metrics.gaussianEncodeCount
+                        ]
+                        if frame >= 20 {
+                            oldGPU.append(gpu)
+                            oldCPU.append(cpu)
+                        }
+                    }
+                }
+            }
+        }
+        try #require(oldGPU.count == 80)
+        try #require(newGPU.count == 80)
+        #expect(newMetrics["gaussianEncodeCount"] == (testCase.joined ? 3 : 0))
+        #expect(newMetrics["renderPassCount"] == (testCase.joined ? 2 : 1))
+        let oldMedian = median(oldGPU)
+        let newMedian = median(newGPU)
+        print(
+            "CELL_BLUR_BENCHMARK cell=\(testCase.cell) joined=\(testCase.joined) transparent=\(testCase.transparent) "
+                + "old_gpu_ms=\(oldMedian) new_gpu_ms=\(newMedian) old_cpu_ms=\(median(oldCPU)) new_cpu_ms=\(median(newCPU))"
+        )
+        results.append([
+            "cell": testCase.cell,
+            "joined": testCase.joined,
+            "transparent": testCase.transparent,
+            "old_gpu_ms": oldGPU,
+            "new_gpu_ms": newGPU,
+            "old_cpu_ms": oldCPU,
+            "new_cpu_ms": newCPU,
+            "first_frame_old_cpu_ms": firstOldCPU,
+            "first_frame_new_cpu_ms": firstNewCPU,
+            "old_metrics": oldMetrics,
+            "new_metrics": newMetrics
+        ])
+    }
+    if let output = ProcessInfo.processInfo.environment["DESKTOP_GLOW_CELL_BLUR_BENCHMARK_OUTPUT"] {
+        let data = try JSONSerialization.data(
+            withJSONObject: [
+                "width": width,
+                "height": height,
+                "scale": 2,
+                "paired_runs": 80,
+                "results": results
+            ],
+            options: [.prettyPrinted, .sortedKeys]
+        )
+        try data.write(to: URL(fileURLWithPath: output))
+    }
+}
+
 private func writePNG(texture: MTLTexture, width: Int, height: Int, to url: URL) throws {
     var bytes = [UInt8](repeating: 0, count: width * height * 4)
     bytes.withUnsafeMutableBytes { buffer in
